@@ -1,0 +1,52 @@
+#!/bin/bash 
+#*******************************************************************************************************************
+#* Scripts                                                                                                         *
+#*******************************************************************************************************************
+#* File:             countdown.sh                                                                                  *
+#* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+ 
+if [ "$#" -lt "2" ] ; then 
+	echo "Incorrect usage ! Example:" 
+	echo "$0 -d  \"Jun 10 2011 16:06\""
+	echo "or"
+	echo "$0 -m  90"
+	exit 1 
+fi 
+ 
+now=`date +%s` 
+ 
+if [ "$1" = "-d" ] ; then 
+	{{ if eq .tools_flavor "bsd" -}}
+	until=`date -j -f "%b %d %Y %H:%M" "$2" +%s`
+	{{- else -}}
+	until=`date -d "$2" +%s`
+	{{- end }}
+fi 
+ 
+if [ "$1" = "-m" ] ; then 
+	until=`expr 60 \* $2` 
+	until=`expr $until + $now` 
+fi 
+ 
+sec_rem=`expr $until - $now` 
+ 
+while [ $sec_rem -gt 0 ]; do 
+	sleep 1 &
+	now=`date +%s` 
+	sec_rem=`expr $until - $now` 
+	clear 
+	date 
+	echo "----------------------------" 
+	echo "Weeks:    $(expr $sec_rem / 604800)"
+	echo "Days:     $(expr $sec_rem % 604800 / 86400)"
+	echo "Hours:    $(expr $sec_rem % 86400 / 3600)"
+	echo "Minutes:  $(expr $sec_rem % 3600 / 60)"
+	echo "Seconds:  $(expr $sec_rem % 60)"
+	wait
+done
+
+if [ $sec_rem -lt 1 ]; then 
+	echo "$2 is history !" 
+fi 

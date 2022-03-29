@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use Term::ANSIColor;
+
+if($#ARGV != 0) {
+    die "Usage: git-brstatus <reference>\n";
+}
+
+my $base = $ARGV[0];
+my @branches = split(/\n/, `git for-each-ref --format='%(refname)::%(objectname)' refs/heads/`);
+my $currentsha1 = `git show-ref --head refs/heads/HEAD --hash`;
+chomp $currentsha1;
+printf "%-30s%8s : %-8s\n", 'Branch', 'Behind', 'Ahead';
+my $red = "\[[1;31m";
+foreach my $branch (@branches) {
+	chomp;
+	next unless $branch =~ m|^refs/heads/(.+)::([0-9a-f]{40})$|;
+	my ($branchname, $branchsha1) = ($1, $2);
+	#next if $branchname eq $base;
+	my $lrcount = `git rev-list --left-right --count $base...$branchsha1`;
+	next unless $lrcount =~ m|^\s*([0-9]+)\s+([0-9]+)\s*$|;
+	my ($behind, $ahead) = ($1, $2);
+	my $fs = color('reset');
+	$fs .= color('yellow') if $currentsha1 eq $branchsha1;
+	$fs .= "%-30s" . color('red') . "%8d" . color('reset') . " : " . color('green') . "%-8d" . color('reset');
+	printf "$fs\n", $branchname, $behind, $ahead;
+}

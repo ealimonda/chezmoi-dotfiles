@@ -1,0 +1,31 @@
+{{- $unisonlocalhostname := "" -}}
+{{- if hasKey . "unisonlocalhostname" -}}
+{{-   $unisonlocalhostname = .unisonlocalhostname -}}
+{{- else -}}
+{{-   writeToStdout "Local hostname for Unison (usually Computer-Name.local)\n" -}}
+{{-   $unisonlocalhostname = promptString (.chezmoi.hostname | printf "%s.local") -}}
+{{- end -}}
+
+{{- $computertype := "" -}}
+{{- if hasKey . "computertype" -}}
+{{-   $computertype = .computertype -}}
+{{- else -}}
+{{-   writeToStdout "Computer type (client or server)\n" -}}
+{{-   $computertype = promptString "server" -}}
+{{-   if ne $computertype "server" -}}
+{{-     $computertype = "client" -}}
+{{-   end -}}
+{{- end -}}
+
+{{- $tools_flavor := "unknown" -}}
+{{- if eq .chezmoi.os "darwin" "dragonfly" "dragonfly" "freebsd" "ios" "netbsd" "openbsd" -}}
+{{-   $tools_flavor = "bsd" -}}
+{{- else if eq .chezmoi.os "android" "linux" "windows" -}}
+{{-   $tools_flavor = "gnu" -}}
+{{- end -}}
+
+[data]
+    unisonlocalhostname = {{ $unisonlocalhostname | quote }}
+    computertype = {{ $computertype | quote }}
+    tmuxprefix = "{{- if eq $computertype "client" -}}F1{{- else -}}F2{{- end -}}"
+    tools_flavor = {{ $tools_flavor | quote }}

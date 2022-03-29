@@ -1,0 +1,14 @@
+"*******************************************************************************************************************
+"* Config files                                                                                                    *
+"*******************************************************************************************************************
+"* File:             .vimrc                                                                                        *
+"* Copyright:        (c) 2011-2017 alimonda.com; Emanuele Alimonda                                                 *
+"*                   Public Domain                                                                                 *
+"*******************************************************************************************************************
+
+if has("gui_macvim")
+	macmenu Window.Show\ Previous\ Tab key=<nop>
+	macmenu Window.Show\ Next\ Tab key=<nop>
+	map <D-{> <Plug>AirlineSelectPrevTab
+	map <D-}> <Plug>AirlineSelectNextTab
+endif

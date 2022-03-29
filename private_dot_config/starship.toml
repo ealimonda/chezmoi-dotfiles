@@ -1,0 +1,525 @@
+#*******************************************************************************************************************
+#* Config files                                                                                                    *
+#*******************************************************************************************************************
+#* File:             .config/starship.toml                                                                         *
+#* Copyright:        (c) 2022 alimonda.com; Emanuele Alimonda                                                      *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+
+#format = "$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
+#right_format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs"
+#format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs$line_break$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
+#format = "$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
+#right_format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs"
+
+format = """\
+[┌─](fg:244)\
+$status\
+$cmd_duration\
+$sudo\
+$username\
+$hostname\
+$time\
+\
+$fill\
+\
+$cmake\
+$container\
+$dart\
+$golang\
+$nodejs\
+$perl\
+$php\
+$python\
+$rust\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$shlvl\
+$jobs\
+\
+$line_break\
+\
+[└](fg:244)$character\
+$directory\
+$docker_context\
+$env_var\
+$shell\
+"""
+# ┌ U+250C Box Drawings Light Down and Right
+# └ U+2514 Box Drawings Light Up and Right
+# ─ U+2500 Box Drawings Light Horizontal
+# unused = "$aws$azure$battery$conda$cobol$crystal$deno$dotnet$elixir$elm$erlang$gcloud$helm$java$julia$kotlin$kubernetes$line_break$localip$lua$memory_usage$hg_branch$nim$nix_shell$ocaml$openstack$package$pulumi$purescript$rlang$red$ruby$scala$singularity$swift$terraform$vlang$vcsh$zig$custom"
+
+# Timeout for starship to scan files (in milliseconds).
+# scan_timeout = 30
+
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 1000
+
+continuation_prompt = '[\[%_ …\]](fg:244) '
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[aws]
+# https://starship.rs/config/#aws
+disabled = true
+
+[azure]
+# https://starship.rs/config/#azure
+disabled = true
+
+[battery]
+# https://starship.rs/config/#battery
+disabled = true
+
+[character]
+# https://starship.rs/config/#character
+#success_symbol = "[•](bold green)"
+success_symbol = "[❯](bold green)" # U+276F Heavy Right-Pointing Angle Quotation Mark Ornament
+error_symbol = "[✗](bold red)" # U+2717 Ballot X
+#vicmd_symbol = '\[[NORM](bold yellow)\]'
+vicmd_symbol = '[❮](bold yellow)' # U+276E Heavy Left-Pointing Angle Quotation Mark Ornament
+
+[cmake]
+# https://starship.rs/config/#cmake
+# The format for the module.
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+# The version format. Available vars are raw, major, minor, & patch
+# version_format = "v${raw}"
+# The symbol used before the version of cmake.
+symbol = "cmake"
+# The style for the module.
+style = "blue"
+# Disables the cmake module.
+disabled = false
+
+[cmd_duration]
+# https://starship.rs/config/#command-duration
+#min_time = 2000
+format = '[\[](fg:244)[⧖:$duration]($style)[\]](fg:244)'
+style = 'purple bold'
+show_milliseconds = true
+#disabled = false
+#show_notifications = false
+#min_time_to_notify = 45000
+
+[cobol]
+# https://starship.rs/config/#cobol-gnucobol
+disabled = true
+
+[conda]
+# https://starship.rs/config/#conda
+disabled = true
+
+[container]
+# https://starship.rs/config/#container
+format = '[\[](fg:244)[$symbol(:$name)]($style)[\]](fg:244)'
+# symbol = '⬢'
+style = 'red dimmed'
+# disabled = false
+
+[crystal]
+# https://starship.rs/config/#crystal
+disabled = true
+
+[dart]
+# https://starship.rs/config/#dart
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+# version_format = 'v${raw}'
+symbol = 'dart'
+style = 'blue'
+# disabled = false
+
+[deno]
+# https://starship.rs/config/#deno
+disabled = true
+
+[directory]
+# https://starship.rs/config/#directory
+truncation_length = 64
+truncate_to_repo = false
+fish_style_pwd_dir_length = 2
+# use_logical_path = true
+#format = '[$path]($style)[$read_only]($read_only_style) '
+#repo_root_format = '[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+repo_root_style = 'cyan bold'
+style = 'blue bold'
+# disabled = false
+read_only = ' ⊘' # U+2298 Circled Division Slash
+# read_only_style = 'red'
+truncation_symbol = '*'
+# home_symbol = '~'
+use_os_path_sep = false
+#[directory.substitutions]
+#"/cygdrive" = "/"
+#"/mnt/c" = "{C:}"
+#"/mnt/d" = "{D:}"
+#"/mnt/e" = "{E:}"
+#"/mnt/f" = "{F:}"
+
+[docker_context]
+# https://starship.rs/config/#docker-context
+symbol = 'docker'
+style = 'blue'
+format = '[\[](fg:244)[$symbol(:$context)]($style)[\]](fg:244)'
+# only_with_files = true
+# disabled = false
+
+[dotnet]
+# https://starship.rs/config/#dotnet
+disabled = true
+
+[elixir]
+# https://starship.rs/config/#elixir
+disabled = true
+
+[elm]
+# https://starship.rs/config/#elm
+disabled = true
+
+#[env_var]
+# https://starship.rs/config/#environment-variable
+
+[erlang]
+# https://starship.rs/config/#erlang
+disabled = true
+
+[fill]
+# https://starship.rs/config/#fill
+style = 'fg:244'
+#symbol = ' '
+symbol = '─' # U+2500 Box Drawings Light Horizontal
+#disabled = false
+
+[gcloud]
+# https://starship.rs/config/#google-cloud-gcloud
+disabled = true
+
+[git_branch]
+# https://starship.rs/config/#git-branch
+format = '[\[](fg:244)[$symbol](cyan)[:](fg:244)[$branch]($style)([:](fg:244)[$remote]($style))'
+symbol = '±'
+style = 'purple'
+#truncation_length = 9223372036854775807
+#truncation_symbol = '…'
+#only_attached = false
+#always_show_remote = false
+#disabled = false
+
+[git_commit]
+# https://starship.rs/config/#git-commit
+commit_hash_length = 9
+format = '[|](fg:244)[$hash$tag]($style)'
+style = 'cyan'
+only_detached = true
+#disabled = false
+#tag_symbol = '|🏷'
+tag_disabled = false
+
+[git_state]
+# https://starship.rs/config/#git-state
+#rebase = 'REBASING'
+#merge = 'MERGING'
+#revert = 'REVERTING'
+#cherry_pick = 'CHERRY-PICKING'
+#bisect = 'BISECTING'
+#am = 'AM'
+#am_or_rebase = 'AM/REBASE'
+#style = 'bold yellow'
+format = '[\(](fg:244)[$state( $progress_current/$progress_total)]($style)[\)](fg:244)'
+#disabled = false
+
+[git_metrics]
+# https://starship.rs/config/#git-metrics
+#added_style = 'bold green'
+#deleted_style = 'bold red'
+#only_nonzero_diffs = true
+format = '( [+$added]($added_style))( [-$deleted]($deleted_style))'
+disabled = true
+
+[git_status]
+# https://starship.rs/config/#git-status
+#format = '(|[$all_status$ahead_behind]($style))\]'
+format = '($conflicted)($deleted)($renamed)($modified)($staged)($untracked)[|](fg:244)($ahead_behind)($stashed)[\]](fg:244)'
+style = 'none'
+stashed = ' ⚑:$count' # U+2691 Black flag
+#ahead = '[↑${count}](yellow)'
+ahead = '[⇧${count}](yellow)' # U+21E7 Upwards White Arrow
+#behind = '[↓${count}](blue)'
+behind = '[⇩${count}](blue)' # U+21E9 Downwards White Arrow
+#up_to_date = '[⇥](green)'
+up_to_date = '[✓](green)' # U+2713 Check Mark
+diverged = '[⇧${ahead_count}](yellow)[⇩${behind_count}](blue)'
+conflicted = ' [✗$count](red)' # U+2717 Ballot X
+deleted = ' [⌫$count](yellow)' # U+232B Erase To the Left
+renamed = ' [↷$count](yellow)' # U+21B7 Clockwise Top Semicircle Arrow
+modified = ' [✎$count](yellow)' # U+270E Lower Right Pencil
+staged = ' [⚭$count](blue)' # U+26AD Marriage Symbol
+untracked = ' [∴$count](cyan)' # U+2234 Therefore
+#ignore_submodules = false
+#disabled = false
+windows_starship = "/mnt/c/ProgramData/chocolatey/bin/starship.exe"
+
+[golang]
+# https://starship.rs/config/#go
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+symbol = 'go'
+style = 'cyan'
+#disabled = false
+
+[helm]
+# https://starship.rs/config/#helm
+disabled = true
+
+[hostname]
+# https://starship.rs/config/#hostname
+ssh_only = false
+#trim_at = '.'
+format = '(@[$hostname]($style))[\]](fg:244)'
+style = 'green dimmed'
+#disabled = false
+
+[java]
+# https://starship.rs/config/#java
+disabled = true
+
+[jobs]
+# https://starship.rs/config/#jobs
+#threshold = 1
+#symbol_threshold = 1
+#number_threshold = 2
+format = '[\[](fg:244)[$symbol(:$number)]($style)[\]](fg:244)'
+#symbol = '✦'
+#style = 'bold blue'
+#disabled = false
+
+[julia]
+# https://starship.rs/config/#julia
+disabled = true
+
+[kotlin]
+# https://starship.rs/config/#kotlin
+disabled = true
+
+[kubernetes]
+# https://starship.rs/config/#kubernetes
+disabled = true
+
+[line_break]
+# https://starship.rs/config/#line-break
+disabled = false
+
+[localip]
+# https://starship.rs/config/#localip
+disabled = true
+
+[lua]
+# https://starship.rs/config/#lua
+disabled = true
+
+[memory_usage]
+# https://starship.rs/config/#memory-usage
+disabled = true
+
+[hg_branch]
+# https://starship.rs/config/#mercurial-branch
+disabled = true
+
+[nim]
+# https://starship.rs/config/#nim
+disabled = true
+
+[nix_shell]
+# https://starship.rs/config/#nix-shell
+disabled = true
+
+[nodejs]
+# https://starship.rs/config/#node-js
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+symbol = 'node'
+style = 'green'
+#disabled = false
+#not_capable_style = 'bold red'
+
+[ocaml]
+# https://starship.rs/config/#ocaml
+disabled = true
+
+[openstack]
+# https://starship.rs/config/#openstack
+disabled = true
+
+[package]
+# https://starship.rs/config/#package-manager
+#format = 'is [$symbol$version]($style) '
+#symbol = '≡ƒôª '
+#style = '208 bold'
+#display_private = false
+#disabled = true
+#version_format = 'v${raw}'
+disabled = true
+
+[perl]
+# https://starship.rs/config/#perl
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+symbol = 'pl'
+style = '149'
+#disabled = false
+
+[php]
+# https://starship.rs/config/#php
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+symbol = 'php'
+style = '147'
+#disabled = false
+
+[pulumi]
+# https://starship.rs/config/#pulumi
+disabled = true
+
+[purescript]
+# https://starship.rs/config/#purescript
+disabled = true
+
+[python]
+# https://starship.rs/config/#python
+#pyenv_version_name = false
+#pyenv_prefix = 'pyenv '
+format = '[\[](fg:244)[${symbol}[:](fg:244)${pyenv_prefix}(${version})([:\(](fg:244)$virtualenv[\)](fg:244))]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+style = 'yellow'
+symbol = 'py'
+#disabled = false
+
+[rlang]
+# https://starship.rs/config/#r
+disabled = true
+
+[red]
+# https://starship.rs/config/#red
+disabled = true
+
+[ruby]
+# https://starship.rs/config/#ruby
+disabled = true
+
+[rust]
+# https://starship.rs/config/#rust
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+#version_format = 'v${raw}'
+symbol = 'rs'
+style = 'red'
+#disabled = false
+
+[scala]
+# https://starship.rs/config/#scala
+disabled = true
+
+[shell]
+# https://starship.rs/config/#shell
+format = '[$indicator]($style) '
+bash_indicator = '\$'
+#fish_indicator = 'fsh'
+zsh_indicator = '%#'
+powershell_indicator = 'PS>'
+#ion_indicator = 'ion'
+#elvish_indicator = 'esh'
+#tcsh_indicator = 'tsh'
+#nu_indicator = 'nu'
+#xonsh_indicator = 'xsh'
+cmd_indicator = '>'
+#unknown_indicator = ''
+style = 'white bold'
+disabled = false
+
+[shlvl]
+# https://starship.rs/config/#shlvl
+#threshold = 2
+format = '[\[](fg:244)[$symbol([:](fg:244)$shlvl)]($style)[\]](fg:244)'
+symbol = '⧈' # U+29C8 Squared Square
+#repeat = false
+#style = 'bold yellow'
+disabled = false
+
+[singularity]
+# https://starship.rs/config/#singularity
+disabled = true
+
+[status]
+# https://starship.rs/config/#status
+format = '[\[](fg:244)[$symbol$status]($style)[\]](fg:244)'
+# symbol = '✖'
+# success_symbol = '✔️'
+# not_executable_symbol = '🚫'
+# not_found_symbol = '🔍'
+# sigint_symbol = '🧱'
+# signal_symbol = '⚡'
+#style = 'bold red'
+#map_symbol = false
+#recognize_signal_code = true
+pipestatus = true
+#pipestatus_separator = '|'
+pipestatus_format = '[\[](fg:244)$pipestatus [=>](fg:244) [$symbol$common_meaning$signal_name$maybe_int]($style)[\]](fg:244)'
+disabled = false
+
+[sudo]
+# https://starship.rs/config/#sudo
+format = '[\[](fg:244)[$symbol]($style)[\]](fg:244)'
+symbol = '^'
+#style = 'bold blue'
+#allow_windows = false
+disabled = false
+
+[swift]
+# https://starship.rs/config/#swift
+disabled = true
+
+[terraform]
+# https://starship.rs/config/#terraform
+disabled = true
+
+[time]
+# https://starship.rs/config/#time
+format = '[\[](fg:244)[$time]($style)[\]](fg:244)'
+style = 'cyan'
+#use_12hr = false
+disabled = false
+#utc_time_offset = 'local'
+#time_range = '-'
+#time_format = '%a %d %T'
+time_format = '%a %Y-%m-%d %T'
+
+[username]
+# https://starship.rs/config/#username
+format = '[\[](fg:244)[$user]($style)'
+style_root = 'red bold'
+style_user = 'green bold'
+show_always = true
+disabled = false
+
+[vagrant]
+# https://starship.rs/config/#vagrant
+disabled = true
+
+[vlang]
+# https://starship.rs/config/#v
+disabled = true
+
+[vcsh]
+# https://starship.rs/config/#vcsh
+disabled = true
+
+[zig]
+# https://starship.rs/config/#zig
+disabled = true
+
+#[custom]
+# https://starship.rs/config/#custom-commands

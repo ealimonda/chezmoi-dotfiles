@@ -1,0 +1,206 @@
+#*******************************************************************************************************************
+#* Config files                                                                                                    *
+#*******************************************************************************************************************
+#* File:             .tmux.conf                                                                                    *
+#* Copyright:        (c) 2011-2020 alimonda.com; Emanuele Alimonda                                                 *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+
+## Note: This file uses folding.  If you're in vim and you don't know how to unfold, press zR
+
+### Prefix Settings
+# [[[
+# Use {{ .tmuxprefix }} as prefix
+set-option -g prefix {{ .tmuxprefix }}
+bind {{ .tmuxprefix }} send-prefix
+
+# Alternate prefix
+unbind-key C-b
+set-option -g prefix2 C-b
+bind C-b send-prefix -2
+# ]]]
+
+### General Keybindings
+# [[[
+# C-x: Kill pane (default was: x)
+unbind ^X
+bind ^X confirm-before kill-pane
+
+# x: Lock Screen
+unbind x
+bind x lock-server
+
+# *: List clients
+unbind *
+bind * list-clients
+
+# Tab, C-a: Alternate last window
+unbind C-a
+bind C-a last-window
+unbind Tab
+bind Tab last-window
+
+# \: Quit
+unbind '\'
+bind '\' confirm-before "kill-server"
+
+# k: Kill window
+unbind k
+bind k confirm-before "kill-window"
+
+# &: Delete buffer
+unbind &
+bind & delete-buffer
+
+# |,-: Split (left/right, top/bottom
+unbind |
+bind | split-window -c "#{pane_current_path}" -h
+unbind -
+bind - split-window -c "#{pane_current_path}" -v
+
+# ": Windowlist
+unbind '"'
+bind '"' choose-window
+
+# c: Create new window at the current path
+bind c new-window -c "#{pane_current_path}"
+# C: Create new window disregarding current path
+bind C new-window -c ~
+
+# Some vim-like bindings
+# Ctrl-y: enter copy mode
+bind-key C-y copy-mode
+# P: Paste
+bind P paste-buffer
+# (copy)v: begin selection
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+# (copy)y: yank
+bind-key -T copy-mode-vi 'y' send -X copy-selection
+# (copy)Esc: cancel
+bind-key -T copy-mode-vi Escape send -X cancel
+# ]]]
+
+### General Settings
+# [[[
+# TERM
+set-option -g default-terminal 'screen-256color'
+set-option -g terminal-overrides ',xterm-256color:Tc'
+# Mouse settings
+set-option -g -q mouse on
+# Bells
+set-option -g bell-action any
+set-option -g visual-bell off
+# Terminal emulator window title
+set-option -g set-titles on
+set-option -g set-titles-string '#{host}:#{session_name}.#{window_index}.#{pane_index} #{window_name} #{pane_title}' # Hostname:session.window.pane WindowName Title
+# Vi-style
+set-option -g status-keys vi
+setw -g mode-keys vi
+# Monitor other windows for activity
+setw -g monitor-activity on
+# History
+set -g history-limit 4096
+# ]]]
+
+### Statusbar
+# [[[
+# Settings
+#set-option -g status-utf8 on
+set-option -g status-justify centre
+set-option -g status-interval 15
+set-option -g status-left-length 40
+set-option -g status-right-length 40
+# Colors
+set-option -g status-style bg=black,fg=white
+set-option -g pane-active-border-style fg=green,bg=black
+set-option -g pane-border-style fg=white,bg=black
+set-option -g message-style fg=black,bg=yellow
+setw -g window-status-style bg=black
+setw -g window-status-current-style fg=green
+#setw -g window-status-alert-style fg=yellow
+setw -g window-status-bell-style fg=red
+#setw -g window-status-content-style fg=cyan
+setw -g window-status-activity-style fg=yellow
+
+# Strings to display
+set -g status-left '#[fg=red]#(hostname -s)#[fg=green]:#[fg=white]#{session_name}#[fg=green]][#[default]'
+{{ if eq .chezmoi.os "darwin" -}}
+# /proc/loadavg doesn't exist on Mac OS, let's use uptime
+set -g status-right "#[fg=green]][#[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[fg=green]][#[fg=white]#(uptime | awk '{ print \$\\(NF-2\\) \" \" \$\\(NF-1\\) \" \" \$\\(NF\\) }')#[default]"
+{{- else -}}
+set -g status-right '#[fg=green]][#[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[fg=green]][#[fg=white]#(cat /proc/loadavg |cut -d" " -f1,2,3,4)#[default]'
+{{- end }}
+# ]]]
+
+### Extra settings and bindings
+# [[[
+# Clock
+setw -g clock-mode-colour blue
+setw -g clock-mode-style 24
+
+setw -g alternate-screen off
+
+set -g lock-command '/usr/bin/vlock'
+# F5: Lock show fullscreen analog clock
+unbind F5
+bind F5 set lock-command 'clockywock' \; lock-client \; set lock-command '/usr/bin/vlock'
+# F6: Blank screen
+unbind F6
+{{ if eq .chezmoi.os "darwin" -}}
+# vlock is not available on Mac OS X, let's just use screen blanking
+set -g lock-command 'tput civis && echo "Press Enter to resume..." && read -s -n1'
+bind F6 lock-client
+{{- else -}}
+bind F6 set lock-command 'tput civis && read -s -n1' \; lock-client \; set lock-command '/usr/bin/vlock'
+{{- end }}
+
+# Clear history
+bind C-l \
+  send-keys -R 'C-l' \;\
+  clear-history
+
+# Toggle mouse reporting (useful for iSSH and similar)
+unbind M
+bind M set -g mouse off
+unbind m
+bind m set -g mouse on
+
+## Zoom pane to its own window (info: http://tangledhelix.com/blog/2012/07/16/tmux-and-mouse-mode/)
+# (No longer useful since tmux 1.8 has native support for -Z)
+#unbind +
+#bind + \
+#  new-window -d -n tmux-zoom 'clear && echo TMUX ZOOM && read' \;\
+#  swap-pane -s tmux-zoom.0 \;\
+#  select-window -t tmux-zoom
+#
+## Zoom back
+#unbind =
+#bind = \
+#  last-window \;\
+#  swap-pane -s tmux-zoom.0 \;\
+#  kill-window -t tmux-zoom
+#
+
+## Reset SHLVL variable
+set-environment -gr SHLVL
+
+{{ if eq .chezmoi.os "darwin" -}}
+# Fix pasteboard support
+# (This should no longer be necessary)
+#set-option -g default-command "reattach-to-user-namespace -l $SHELL"
+{{- end }}
+# ]]]
+
+# Load local configuration if present
+source-file -q ~/.tmux/tmux.local.conf.include
+
+### Plugins
+# [[[
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-capture-pane-contents 'on'
+
+run '~/.tmux/plugins/tpm/tpm'
+# ]]]
+
+# vim: set ft=conf foldmethod=marker foldenable foldmarker=[[[,]]] :

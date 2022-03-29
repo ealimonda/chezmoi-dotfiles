@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export VIMPAGER_RC="$HOME/.mvimpagerrc"
+vimpager

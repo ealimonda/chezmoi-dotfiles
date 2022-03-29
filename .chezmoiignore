@@ -1,0 +1,32 @@
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon/
+.mactrash
+.mvimpagerrc
+bin/airport
+bin/ash.pl
+bin/finderlabel.py
+bin/free
+bin/marked
+bin/mview
+bin/mvim
+bin/mvimdiff
+bin/mvimdirdiff
+bin/mvimpager
+bin/vim
+bin/vimdiff
+bin/vvim
+bin/vvimdiff
+{{- if and (ne .chezmoi.arch "amd64") (ne .chezmoi.arch "i386") }}
+bin/artFileTool
+bin/restorationArchiveTool
+bin/sleepdisplay
+{{ end -}}
+{{- if ne .chezmoi.arch "amd64" }}
+bin/ed2k_hash
+bin/getTrueName
+bin/keyboard_leds
+bin/luadec51
+bin/mate
+bin/textinputsource
+{{ end -}}
+{{ end }}

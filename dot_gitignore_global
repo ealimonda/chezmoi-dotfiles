@@ -1,0 +1,39 @@
+# vim backups and temporary swap files
+*~
+*.sw[a-z]
+
+# OS X Finder stuff
+.DS_Store
+
+# OS X (AFP) Network stuff
+.AppleDB
+.AppleDesktop
+.AppleDouble
+Network\ Trash\ Folder
+Temporary\ Items
+
+# OS X extras (mostly on external disks)
+.Spotlight-V100
+.Trashes
+
+# Xcode
+#*.pbxuser
+#!default.pbxuser
+#*.mode1v3
+#!default.mode1v3
+#*.mode2v3
+#!default.mode2v3
+#*.perspectivev3
+#!default.perspectivev3
+#*.xcworkspace
+#!default.xcworkspace
+#xcuserdata
+#*.moved-aside
+#DerivedData
+#.idea/
+
+# Windows stuff, just in case
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+

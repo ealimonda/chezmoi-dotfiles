@@ -1,0 +1,338 @@
+#*******************************************************************************************************************
+#* Config files                                                                                                    *
+#*******************************************************************************************************************
+#* File:             .zshrc                                                                                        *
+#* Copyright:        (c) 2016 alimonda.com; Emanuele Alimonda                                                      *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+
+# This file is sourced by all *interactive* bash shells on startup, including some apparently interactive shells
+# such as scp and rcp that can't tolerate any output.  So make sure this doesn't display anything or bad things will
+# happen !
+
+# Test for an interactive shell.  There is no need to set anything past this point for scp and rcp, and it's
+# important to refrain from outputting anything in those cases.
+
+# De-duplicate the $path array
+typeset -U path
+
+# Source all files starting with a in ~/.zshrc.d/
+if [ -d ${HOME}/.zshrc.d ]; then
+	for i in ${HOME}/.zshrc.d/a*.zsh; do
+		case $i in *~) continue;; esac
+		source $i
+	done
+fi
+
+# Correctly display UTF-8 with combining characters.
+if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+	setopt combiningchars
+	#if [ -f ${HOME}/.iterm2_shell_integration.zsh ]; then
+	#	source ${HOME}/.iterm2_shell_integration.zsh
+	#fi
+fi
+
+if [[ ! -o interactive ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+# Put your fun stuff here.
+# Source all files starting with i in ~/.zshrc.d/
+if [ -d ${HOME}/.zshrc.d ]; then
+	for i in ${HOME}/.zshrc.d/i*.zsh; do
+		case $i in *~) continue;; esac
+		source $i
+	done
+fi
+
+# History
+export HISTSIZE=2000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+# Autocompletion (many taken from http://free-po.htnet.hr/MarijanPeh/files/zshrc)
+zmodload zsh/complist && autoload -U compinit && compinit
+#zstyle ':completion:*' verbose yes
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%U%F{magenta}%d%f%u'
+zstyle ':completion:*:messages' format '%F{cyan}%d%f'
+zstyle ':completion:*:warnings' format '%B%F{yellow}Sorry, no matches for: %d%f%b'
+
+## determine in which order the names (files) should be listed and completed
+## when using menu completion.
+## `size' to sort them by the size of the file
+## `links' to sort them by the number of links to the file
+## `modification' or `time' or `date' to sort them by the last modification time
+## `access' to sort them by the last access time
+## `inode' or `change' to sort them by the last inode change time
+## `reverse' to sort in decreasing order
+## If the style is set to any other value, or is unset, files will be sorted
+## alphabetically by name.
+zstyle ':completion:*' file-sort name
+
+## how many completions switch on menu selection
+## use 'long' to start menu compl. if list is bigger than screen
+## or some number to start menu compl. if list has that number
+## of completions (or more).
+#zstyle ':completion:*' menu select=long
+zstyle ':completion:*' menu select
+
+## case-insensitive (uppercase from lowercase) completion
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+## case-insensitive (all) completion
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+## case-insensitive,partial-word and then substring completion
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+## offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+## insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+## ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+## completion caching
+#zstyle ':completion::complete:*' use-cache 1
+#zstyle ':completion::complete:*' cache-path ~/.zcompcache/$HOST
+
+## add colors to completions
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
+if [ -z "$LS_COLORS" ]; then
+	# OSX Default
+	#LSCOLORS='exfxcxdxbxegedabagacad'
+	# GNU equivalent
+	#             ex       fx       cx       dx       bx       eg       ed       ab       ag       ac       ad'
+	LS_COLORS="di=01;34:ln=01;35:so=01;32:pi=01;33:ex=01;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43:"
+fi
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
+## don't complete backup files as executables
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
+
+## filename suffixes to ignore during completion (except after rm command)
+#zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
+#'*?.(o|c~|old|pro|zwc)' '*~'
+
+## completions for some progs. not in default completion system
+
+#zstyle ':completion:*:*:mpg123:*' file-patterns \
+#'*.(mp3|MP3):mp3\ files *(-/):directories'
+
+#zstyle ':completion:*:*:ogg123:*' file-patterns \
+#'*.(ogg|OGG):ogg\ files *(-/):directories'
+
+## generic completions for programs which understand GNU long options(--help)
+
+compdef _gnu_generic slrnpull make df du
+
+## on processes completion complete all user processes
+#zstyle ':completion:*:processes' command 'ps -au$USER'
+
+## add colors to processes for kill completion
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+
+## common usernames
+#users=(jozo tomi peh) ## complete usernames
+## if u have too much users to write in here, use file; change
+## 'users=(jozo tomi peh)' to 'users=( $(<~/.somefile) )'
+#zstyle ':completion:*' users $users
+
+## common hostnames
+#hosts=( $(</etc/hosts) )
+#zstyle ':completion:*' hosts $hosts
+
+## (user,host) pairs
+## all my accounts:
+#my_accounts=(
+#	{joe,root}@mymachine.com
+#	jbloggs@myothermachine.com
+#)
+
+## other people's accounts:
+#other_accounts=(
+#	{fred,root}@hismachine.com
+#	vera@hermachine.com
+#)
+#zstyle ':completion:*:my-accounts' users-hosts $my_accounts
+#zstyle ':completion:*:other-accounts' users-hosts $other_accounts
+
+## (host, port, user) triples for telnet
+#telnet_users_hosts_ports=(
+#	user1@host1:
+#	user2@host2:
+#	@mail-server:{smtp,pop3}
+#	@news-server:nntp
+#	@proxy-server:8000
+#)
+#zstyle ':completion:*:*:telnet:*' users-hosts-ports $telnet_users_hosts_ports
+
+# let's complete known hosts and hosts from ssh's known_hosts file
+#basehost="host1.example.com host2.example.com"
+#hosts=($(( ( [ -r .ssh/known_hosts ] && awk '{print $1}' .ssh/known_hosts | tr , '\n'); echo $basehost; ) | sort -u) )
+#zstyle ':completion:*' hosts $hosts
+
+setopt interactivecomments
+
+export MYSQL_PS1="(\u@\h) [\d]> "
+
+# Advanced prompt
+#autoload -U promptinit && promptinit
+setopt PROMPT_SUBST
+
+## Vim keybindings
+bindkey -v
+# Familiar bindings
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'g~' vi-oper-swap-case
+bindkey -a G end-of-buffer-or-history
+# In Vim backspace doesn't stop at the point where you started insert mode:
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+# Position
+bindkey '^G' what-cursor-position
+# Home, Forward delete, End, PageUp, PageDown
+bindkey -a '\e[H' beginning-of-line
+bindkey -a '\e[1~' beginning-of-line
+bindkey '\e[H' beginning-of-line
+bindkey '\e[1~' beginning-of-line
+bindkey -a '\e[3~' delete-char
+bindkey '\e[3~' delete-char
+bindkey -a '\e[F' end-of-line
+bindkey -a '\e[4~' end-of-line
+bindkey '\e[F' end-of-line
+bindkey -a '\e[4~' end-of-line
+bindkey '\e[4~' end-of-line
+bindkey -a '\e[5~' beginning-of-history
+bindkey '\e[5~' beginning-of-history
+bindkey -a '\e[6~' end-of-history
+bindkey '\e[6~' end-of-history
+# Incremental search
+bindkey '^R' history-incremental-search-backward
+# Vim-style text objects are supported since version 5.0.8 of zsh. Some are
+# provided as shell functions so need to be manually enabled. In particular,
+# select-bracketed which selects text delimited by brackets and select-quoted
+# which selects text delimited by quote characters. The following binds them to
+# key combinations such as i" a( in both the visual and viopp keymaps.
+autoload -U select-bracketed select-quoted
+zle -N select-bracketed
+zle -N select-quoted
+for km in viopp visual; do
+	bindkey -M $km -- '-' vi-up-line-or-history
+	#for c in {a,i}"${(s..):-\'\"\`\|,./:;-=+@}"; do
+	for c in {a,i}"${(s..):-\'\"\`\|,./:;=+@}"; do
+		bindkey -M $km $c select-quoted
+	done
+	for c in {a,i}${(s..):-'()[]{}<>bB'}; do
+		bindkey -M $km $c select-bracketed
+	done
+done
+# Faster META timeout
+export KEYTIMEOUT=2
+# Edit command line in vim
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -a 'v' edit-command-line
+
+## Syntax highlighting
+#export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# Main
+# unknown-token - unknown tokens / errors
+#ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
+# reserved-word - shell reserved words (if, for)
+#ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=yellow'
+# alias - aliases
+#ZSH_HIGHLIGHT_STYLES[alias]='fg=green'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+# suffix-alias - suffix aliases (requires zsh 5.1.1 or newer)
+#ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,underline'
+# builtin - shell builtin commands (shift, pwd, zstyle)
+#ZSH_HIGHLIGHT_STYLES[builtin]='fg=green'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,underline'
+# function - function names
+#ZSH_HIGHLIGHT_STYLES[function]='fg=green'
+ZSH_HIGHLIGHT_STYLES[function]='fg=cyan'
+# command - command names
+#ZSH_HIGHLIGHT_STYLES[command]='fg=green'
+# precommand - precommand modifiers (e.g., noglob, builtin)
+#ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,underline'
+# commandseparator - command separation tokens (;, &&)
+#ZSH_HIGHLIGHT_STYLES[commandseparator]='none'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'
+# hashed-command - hashed commands
+#ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green'
+# path - existing filenames
+#ZSH_HIGHLIGHT_STYLES[path]='underline'
+# path_prefix - prefixes of existing filenames
+#ZSH_HIGHLIGHT_STYLES[path_prefix]='underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=246,underline'
+# globbing - globbing expressions (*.txt)
+#ZSH_HIGHLIGHT_STYLES[globbing]='fg=blue'
+# history-expansion - history expansion expressions (!foo and ^foo^bar)
+#ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=blue'
+# single-hyphen-option - single hyphen options (-o)
+#ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='none'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan,bold'
+# double-hyphen-option - double hyphen options (--option)
+#ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='none'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
+# back-quoted-argument - backquoted expressions (`foo`)
+#ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=yellow,bold'
+# single-quoted-argument - single quoted arguments ('foo')
+#ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=yellow'
+# double-quoted-argument - double quoted arguments ("foo")
+#ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=yellow'
+# dollar-quoted-argument - dollar quoted arguments ($'foo')
+#ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=yellow'
+# dollar-double-quoted-argument - parameter expansion inside double quotes ($foo inside "")
+#ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=cyan'
+# back-double-quoted-argument - back double quoted arguments (\x inside "")
+#ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=cyan'
+# back-dollar-quoted-argument - back dollar quoted arguments (\x inside $'')
+#ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=cyan'
+# assign - parameter assignments
+#ZSH_HIGHLIGHT_STYLES[assign]='none'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=yellow,bold'
+# redirection - redirection operators (<, >, etc)
+#ZSH_HIGHLIGHT_STYLES[redirection]='none'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta,bold'
+# comment - comments, when setopt INTERACTIVE_COMMENTS is in effect (echo # foo)
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=black,bold'
+# default - everything else
+#ZSH_HIGHLIGHT_STYLES[default]='none'
+
+# Brackets
+# bracket-error - unmatched brackets
+#ZSH_HIGHLIGHT_STYLES[bracket-error]='fg=red,bold'
+# bracket-level-N - brackets with nest level N
+#ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+#ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=magenta,bold'
+#ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=yellow,bold'
+#ZSH_HIGHLIGHT_STYLES[bracket-level-5]='fg=cyan,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-5]='fg=blue,bold'
+# cursor-matchingbracket - the matching bracket, if cursor is on a bracket
+#ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='standout'
+
+if type starship >/dev/null 2>&1; then
+	eval "$(starship init zsh)"
+fi

@@ -1,0 +1,140 @@
+#*******************************************************************************************************************
+##* Config files                                                                                                    *
+##*******************************************************************************************************************
+##* File:             .gitconfig                                                                                    *
+##* Copyright:        (c) 2011-2012 alimonda.com; Emanuele Alimonda                                                 *
+##*                   Public Domain                                                                                 *
+##*******************************************************************************************************************
+
+[core]
+	quotepath = false
+	#askpass = ~/bin/git-password
+	excludesfile = ~/.gitignore_global
+	whitespace = trailing-space,space-before-tab
+	precomposeUnicode = true
+
+[color]
+	# Let's use some colors
+	ui = auto
+
+[difftool]
+	# Don't ask annoying questions when I run difftool
+	prompt = false
+
+[mergetool]
+	# Remove old files
+	keepBackup = true
+
+# vim, autoselect console or gui
+[difftool "vvim"]
+	cmd = vvimdiff -f \"$LOCAL\" \"$REMOTE\"
+[mergetool "vvim"]
+	cmd = vvim -f -d -c "wincmd J" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+# vim, force gui
+[difftool "mvim"]
+	cmd = mvimdiff -f \"$LOCAL\" \"$REMOTE\"
+[mergetool "mvim"]
+	cmd = mvim -f -d -c "wincmd J" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+# vim, force console
+[difftool "cvim"]
+	cmd = vimdiff -f \"$LOCAL\" \"$REMOTE\"
+[mergetool "cvim"]
+	cmd = vim -f -d -c "wincmd J" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+# Some aliases for quick access
+[alias]
+	vvimdiff = difftool -t vvim
+	mvimdiff = difftool -t mvim
+	vimdiff = difftool -t cvim
+	vim-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+	mvim-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; mvim `f`"
+	graph = log --graph --decorate --oneline
+	incoming = !sh -c 'git log --graph --decorate $1@{1}..$1@{0} "$@"'
+	logs = log --graph --abbrev-commit --decorate \
+		--format=format:'%C(yellow)%h%C(reset) %C(bold cyan)%aD%C(reset) %C(yellow)%G?%C(reset) - %C(white)%s%C(reset)\
+		%C(bold blue)[%an]%C(reset) %C(bold green)%d%C(reset)'
+	logx = log --graph --abbrev-commit --decorate \
+		--format=format:'%C(yellow)%h%C(reset) %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(cyan)(committed: %cD)%C(reset) %C(bold red)%d%C(reset)%n\
+		''        %C(white)%s%C(reset)%n\
+		''        %C(bold blue)- %an <%ae> %C(reset) %C(dim blue)(committer: %cn <%ce>)%C(reset)'
+	logg = log --graph --decorate --abbrev=10 --abbrev-commit
+	forcepush = push --force-with-lease
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+	ls-ignored = ls-files --exclude-standard --ignored --others
+	turbomerge = merge -s recursive -X patience
+	conflicted = grep --name-only --full-name '^<<<<<<< '
+	news = log -p HEAD@{1}..HEAD@{0}
+	logf = log --pretty=format:'%C(yellow)%h %C(green)%G?%C(red)%d %C(reset)%s%C(blue) [%cn]' --decorate --numstat
+	filelog = log -u
+	showconflict = !git show "$(cat .git/rebase-merge/stopped-sha)"
+	gpg-rebase = rebase --gpg-sign
+	sign-amend = commit --amend --no-edit --signoff --gpg-sign
+
+[push]
+	default = upstream
+
+[user]
+	useconfigonly = true
+
+[rerere]
+	enabled = true
+
+[filter "utf16"]
+	clean = "iconv -f utf-16le -t utf-8"
+	smudge = "iconv -f utf-8 -t utf-16le"
+	required
+
+[color "diff"]
+	#context = normal
+	meta = yellow bold
+	frag = magenta bold
+	func = yellow
+	#commit = normal
+	#whitespace = red reverse
+	old = red
+	new = green
+
+[color "status"]
+	#header = normal
+	added = yellow
+	#changed = green
+	untracked = cyan
+	branch = blue bold
+	nobranch = red
+	unmerged = red
+
+[color "branch"]
+	#current = green
+	#local = normal
+	remote = cyan
+	upstream = yellow
+	#plain = normal
+
+[diff]
+	renames = copies
+	mnemonicprefix = true
+	algorithm = histogram
+	#tool = araxis
+	#tool = vimdiff
+	#tool = vimdiff2
+	#tool = vimdiff3
+
+[status]
+	submodulesummary = true
+
+[diff "plist"]
+	textconv = "plutil -convert xml1 -o -"
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[diff "hex"]
+	textconv = hexdump -v -C
+	#textconv = "hexdump -e '18/1 \"%02x \" \"\n\"'"
+	#textconv = xxd -c 4 -g 1
+	binary = true
+[pull]
+	rebase = false

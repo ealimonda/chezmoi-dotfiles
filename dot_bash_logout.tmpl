@@ -1,0 +1,18 @@
+#*******************************************************************************************************************
+#* Config files                                                                                                    *
+#*******************************************************************************************************************
+#* File:             .bash_logout                                                                                  *
+#* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+
+# This file is sourced when a login shell terminates.
+
+# Ubuntu stuff
+# Clear the screen for security's sake.
+if [ "$SHLVL" = 1 ]; then
+	[ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+fi
+{{ if ne .chezmoi.os "darwin" -}}
+clear
+{{- end }}
