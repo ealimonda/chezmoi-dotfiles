@@ -41,4 +41,6 @@ UNISONLOCALHOSTNAME={{- .unisonlocalhostname -}}
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.zshrc ]] && . ~/.zshrc
 
+{{ if stat (joinPath .chezmoi.homeDir ".cargo") -}}
 . "$HOME/.cargo/env"
+{{- end }}

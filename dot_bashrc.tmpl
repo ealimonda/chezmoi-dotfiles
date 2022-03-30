@@ -42,7 +42,9 @@ if [ "${BASH_VERSION%%\.*}" -ge 4 ]; then
 		. "${BASHCOMPLOADER}"
 	fi
 fi
+{{ if stat (joinPath .chezmoi.homeDir ".cargo") -}}
 . "$HOME/.cargo/env"
+{{- end }}
 
 if type starship >/dev/null 2>&1; then
 	eval "$(starship init zsh)"
