@@ -2,8 +2,11 @@
 {{- if hasKey . "unisonlocalhostname" -}}
 {{-   $unisonlocalhostname = .unisonlocalhostname -}}
 {{- else -}}
-{{-   writeToStdout "Local hostname for Unison (usually Computer-Name.local)\n" -}}
+{{-   writeToStdout "Local hostname for Unison (usually Computer-Name.local. Enter a single dot '.' to unset)\n" -}}
 {{-   $unisonlocalhostname = promptString (.chezmoi.hostname | printf "%s.local") -}}
+{{-   if eq $unisonlocalhostname "." -}}
+{{-     $unisonlocalhostname = "" -}}
+{{-   end -}}
 {{- end -}}
 
 {{- $computertype := "" -}}
