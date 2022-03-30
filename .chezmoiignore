@@ -1,3 +1,15 @@
+.bash_history
+.cache
+.lesshst
+.local
+.mysql_history
+.python_history
+.tmux/plugins/**
+!.tmux/plugins/tpm/
+.vim/plugged/**
+.viminfo
+.zcompdump
+.zsh_history
 {{- if ne .chezmoi.os "darwin" }}
 .hammerspoon/
 .mactrash
