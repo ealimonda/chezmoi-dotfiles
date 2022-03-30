@@ -16,12 +16,13 @@ bin/vim
 bin/vimdiff
 bin/vvim
 bin/vvimdiff
-{{- if and (ne .chezmoi.arch "amd64") (ne .chezmoi.arch "i386") }}
+{{ end -}}
+{{- if or (ne .chezmoi.os "darwin") (and (ne .chezmoi.arch "amd64") (ne .chezmoi.arch "i386")) }}
 bin/artFileTool
 bin/restorationArchiveTool
 bin/sleepdisplay
 {{ end -}}
-{{- if ne .chezmoi.arch "amd64" }}
+{{- if or (ne .chezmoi.os "darwin") (ne .chezmoi.arch "amd64") }}
 bin/ed2k_hash
 bin/getTrueName
 bin/keyboard_leds
@@ -29,4 +30,3 @@ bin/luadec51
 bin/mate
 bin/textinputsource
 {{ end -}}
-{{ end }}

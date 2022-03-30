@@ -8,13 +8,13 @@
 
 # Make commands more colorful
 alias grep='grep --color=auto'
-shopt -s checkwinsize
-
-{{ if eq .chezmoi.os "darwin" -}}
 alias ls='ls --color=auto'
 export CLICOLOR=1
 #export TERM='xterm-256color'
 
+shopt -s checkwinsize
+
+{{ if eq .chezmoi.os "darwin" -}}
 # http://blog.warrenmoore.net/blog/2010/01/09/make-terminal-follow-aliases-like-symlinks/
 function cd {
 	if [ ${#1} == 0 ]; then
@@ -65,7 +65,7 @@ export HOMEBREW_NO_GITHUB_API=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 export HOMEBREW_TEMP=/usr/local/temp
-{{- else if .chezmoi.os "linux" -}}
+{{- else if eq .chezmoi.os "linux" -}}
 # Some stuff from the Ubuntu bashrc
 if grep -q -s DISTRIB_ID=Ubuntu /etc/lsb-release; then
 	function tarcrypt {
