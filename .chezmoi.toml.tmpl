@@ -29,6 +29,12 @@
 {{- $is_linux := eq .chezmoi.os "linux" -}}
 {{- $is_macos := eq .chezmoi.os "darwin" -}}
 {{- $is_windows := eq .chezmoi.os "windows" -}}
+{{- $is_wsl := false -}}
+{{- if and $is_linux (get .chezmoi "kernel") -}}
+{{-   if hasSuffix "Microsoft" .chezmoi.kernel.osrelease -}}
+{{-     $is_wsl := true -}}
+{{-   end -}}
+{{- end -}}
 
 [data]
     unisonlocalhostname = {{ $unisonlocalhostname | quote }}
@@ -39,6 +45,6 @@
         linux = {{ $is_linux }}
         macos = {{ $is_macos }}
         windows = {{ $is_windows }}
-        wsl = {{ and $is_linux (get .chezmoi "kernel") (hasSuffix "Microsoft" .chezmoi.kernel.osrelease) }}
+        wsl = {{ $is_wsl }}
 
 # vim: set ft=toml.chezmoitmpl ts=4 sw=4 et : #
