@@ -18,7 +18,7 @@ fi
 now=`date +%s` 
  
 if [ "$1" = "-d" ] ; then 
-	{{ if eq .tools_flavor "bsd" -}}
+	{{ if eq .os.tools_flavor "bsd" -}}
 	until=`date -j -f "%b %d %Y %H:%M" "$2" +%s`
 	{{- else -}}
 	until=`date -d "$2" +%s`

@@ -26,9 +26,19 @@
 {{- else if eq .chezmoi.os "android" "linux" "windows" -}}
 {{-   $tools_flavor = "gnu" -}}
 {{- end -}}
+{{- $is_linux := eq .chezmoi.is "linux" -}}
+{{- $is_macos := eq .chezmoi.is "darwin" -}}
+{{- $is_windows := eq .chezmoi.is "windows" -}}
 
 [data]
     unisonlocalhostname = {{ $unisonlocalhostname | quote }}
     computertype = {{ $computertype | quote }}
     tmuxprefix = "{{- if eq $computertype "client" -}}F1{{- else -}}F2{{- end -}}"
-    tools_flavor = {{ $tools_flavor | quote }}
+    [data.os]
+        tools_flavor = {{ $tools_flavor | quote }}
+        linux = {{ $is_linux }}
+        macos = {{ $is_macos }}
+        windows = {{ $is_windows }}
+        wsl = {{ and $is_linux (get .chezmoi "kernel") (hasSuffix "Microsoft" .chezmoi.kernel.osrelease) }}
+
+# vim: set ft=toml.chezmoitmpl ts=4 sw=4 et : #

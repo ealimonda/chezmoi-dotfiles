@@ -13,9 +13,10 @@ export EDITOR=vim
 # Prepend ~/bin to $PATH
 path=( ~/bin $path )
 # Make various commands a bit more colorful
-export LESS="-RM"
+export LESS="-RMX"
 #R:Raw color codes in output (don't remove color codes);
 #M:Long prompts ("Line X of Y")
+#X:Disable termcap initialization (disables alt screen)
 
 {{ if eq .chezmoi.os "darwin" -}}
 ## OS X Only
