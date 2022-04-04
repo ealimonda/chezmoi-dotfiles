@@ -32,7 +32,7 @@
 {{- $is_wsl := false -}}
 {{- if and $is_linux (get .chezmoi "kernel") -}}
 {{-   if hasSuffix "Microsoft" .chezmoi.kernel.osrelease -}}
-{{-     $is_wsl := true -}}
+{{-     $is_wsl = true -}}
 {{-   end -}}
 {{- end -}}
 
