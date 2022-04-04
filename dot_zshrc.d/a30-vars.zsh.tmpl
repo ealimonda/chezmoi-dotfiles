@@ -18,6 +18,12 @@ export LESS="-RMX"
 #M:Long prompts ("Line X of Y")
 #X:Disable termcap initialization (disables alt screen)
 
+{{ if .os.wsl -}}
+# Special path overrides for using a wsl shell for Windows development
+if [ "$TERM_PROGRAM" = "VSCode-wsl" ]; then
+    path=( /usr/local/wbin $path )
+fi
+{{- end }}
 {{ if eq .chezmoi.os "darwin" -}}
 ## OS X Only
 # Append homebrew to the $PATH
