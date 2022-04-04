@@ -416,7 +416,7 @@ disabled = true
 format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
 #version_format = 'v${raw}'
 symbol = 'rs'
-style = 'red'
+style = 'yellow'
 #disabled = false
 
 [scala]
