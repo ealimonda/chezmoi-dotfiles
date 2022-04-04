@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#: `brew diff` [options] [<list.txt>]
+#:
+#: Shows the differences between the package list stored in <list.txt> and the
+#: currently installed packages.
+#:
+#: The file <list.txt> is in the same format as printed by `brew leaves`.
+#:
+#: If <list.txt> is omitted, $HOME/.homebrew.txt will be used instead.
+#:
+#: Available options:
+#: `-c`, `--color`: Output the diff with colors (if colordiff is installed).
+
+color=false
+if [ "$1" == "--color" -o "$1" == "-c" ]; then
+	color=true
+	shift
+fi
+
+if [ -n "$1" ]; then
+	list_file="$1"
+else
+	list_file="$HOME/.homebrew.txt"
+fi
+
+if [ ! -f "$list_file" ]; then
+	echo "List file \"$list_file\" not found."
+	exit 2
+fi
+
+diff_cmd="diff -u"
+if [ "$color" == "true" ]; then
+	if type colordiff >/dev/null 2>&1; then
+		diff_cmd="colordiff -u"
+	fi
+fi
+$diff_cmd "$list_file" <(brew leaves)

@@ -51,10 +51,12 @@ repos/
 {{- if ne .chezmoi.os "darwin" }}
 .gemrc
 .hammerspoon/
+.homebrew.txt
 .mactrash
 .mvimpagerrc
 bin/airport
 bin/ash.pl
+bin/brew-diff
 bin/finderlabel.py
 bin/free
 bin/marked
