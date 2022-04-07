@@ -918,6 +918,10 @@ function url_dispatcher:init()
     hs.urlevent.setDefaultHandler('http')
     self.current_url = {}
     self.chooser = hs.chooser.new(function(handler)
+        if not handler then
+            print("Browser selection aborted by the user")
+            return
+        end
         if #url_dispatcher.current_url == 0 then
             return
         end
