@@ -281,7 +281,7 @@ disabled = true
 ssh_only = false
 #trim_at = '.'
 format = '(@[$hostname]($style))[\]](fg:244)'
-style = 'green dimmed'
+style = 'green bold'
 #disabled = false
 
 [java]
@@ -501,7 +501,7 @@ time_format = '%a %Y-%m-%d %T'
 # https://starship.rs/config/#username
 format = '[\[](fg:244)[$user]($style)'
 style_root = 'red bold'
-style_user = 'green bold'
+style_user = 'green dimmed'
 show_always = true
 disabled = false
 
