@@ -192,7 +192,8 @@ disabled = true
 # https://starship.rs/config/#fill
 style = 'fg:244'
 #symbol = ' '
-symbol = '─' # U+2500 Box Drawings Light Horizontal
+#symbol = '─' # U+2500 Box Drawings Light Horizontal
+symbol = '·' # U+C2B7 Middle Dot
 #disabled = false
 
 [gcloud]
