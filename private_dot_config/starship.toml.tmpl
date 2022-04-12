@@ -267,7 +267,10 @@ staged = ' [⚭$count](blue)' # U+26AD Marriage Symbol
 untracked = ' [∴$count](cyan)' # U+2234 Therefore
 #ignore_submodules = false
 #disabled = false
-windows_starship = "/mnt/c/ProgramData/chocolatey/bin/starship.exe"
+{{- if or .os.wsl .os.windows }}
+#windows_starship = "/mnt/c/ProgramData/chocolatey/bin/starship.exe"
+windows_starship = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/shims/starship.exe"
+{{- end }}
 
 [golang]
 # https://starship.rs/config/#go
