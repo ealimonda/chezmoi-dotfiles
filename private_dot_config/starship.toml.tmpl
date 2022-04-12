@@ -51,7 +51,7 @@ $shell\
 # ┌ U+250C Box Drawings Light Down and Right
 # └ U+2514 Box Drawings Light Up and Right
 # ─ U+2500 Box Drawings Light Horizontal
-# unused = "$aws$azure$battery$conda$cobol$crystal$deno$dotnet$elixir$elm$erlang$gcloud$helm$java$julia$kotlin$kubernetes$line_break$localip$lua$memory_usage$hg_branch$nim$nix_shell$ocaml$openstack$package$pulumi$purescript$rlang$red$ruby$scala$singularity$swift$terraform$vlang$vcsh$zig$custom"
+# unused = "$aws$azure$battery$buf$conda$cobol$crystal$deno$dotnet$elixir$elm$erlang$gcloud$haskell$helm$java$julia$kotlin$kubernetes$line_break$localip$lua$memory_usage$hg_branch$nim$nix_shell$ocaml$openstack$package$pulumi$purescript$rlang$red$ruby$scala$singularity$swift$terraform$vlang$vcsh$zig$custom"
 
 # Timeout for starship to scan files (in milliseconds).
 # scan_timeout = 30
@@ -74,6 +74,10 @@ disabled = true
 
 [battery]
 # https://starship.rs/config/#battery
+disabled = true
+
+[buf]
+# https://starship.rs/config/#buf
 disabled = true
 
 [character]
@@ -272,6 +276,10 @@ format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
 symbol = 'go'
 style = 'cyan'
 #disabled = false
+
+[haskell]
+# https://starship.rs/config/#haskell
+disabled = true
 
 [helm]
 # https://starship.rs/config/#helm
