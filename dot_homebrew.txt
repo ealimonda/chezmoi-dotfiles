@@ -1,4 +1,3 @@
-ansible
 aria2
 astyle
 autoconf
