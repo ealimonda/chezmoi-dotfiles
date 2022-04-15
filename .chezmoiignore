@@ -15,11 +15,13 @@
 .mailcap
 .mime.types
 .mono/
+.motd_shown
 .mysql_history
 .npm/
 .python_history
 .rustup/
 .sqlite_history
+.sudo_as_admin_successful
 .swiftpm/
 .tmux/plugins/**
 .vim/.netrwhist
