@@ -4,9 +4,17 @@ current_version="{{- .chezmoi.version.version -}}"
 tested_version="{{- include "versions/chezmoi.txt" | trim -}}"
 if [ "$current_version" != "$tested_version" ]; then
 	echo "Currently installed chezmoi version $current_version doesn't match the tested version $tested_version"
-	upgrade_command="{{ .chezmoi.executable }} upgrade"
 	if [ ! -w "{{ .chezmoi.executable }}" ]; then
-		upgrade_command="sudo $upgrade_command"
+		sudo_if_needed="sudo "
+	else
+		sudo_if_needed=""
 	fi
+	{{ if ne .chezmoi.executable "/usr/local/bin/chezmoi" }}
+	upgrade_command="${sudo_if_needed}{{ .chezmoi.executable }} upgrade"
+	{{ else if and (eq .chezmoi.os "darwin") (lookPath "brew") -}}
+	upgrade_command="brew update && brew upgrade chezmoi"
+	{{ else -}}
+	upgrade_command="curl -fsLS chezmoi.io/get | ${sudo_if_needed}sh -s -- -b /usr/local/bin/"
+	{{ end -}}
 	echo " - Upgrade with: $upgrade_command"
 fi
