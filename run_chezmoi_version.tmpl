@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+current_version="{{- .chezmoi.version.version -}}"
+tested_version="{{- include "versions/chezmoi.txt" | trim -}}"
+if [ "$current_version" != "$tested_version" ]; then
+	echo "Currently installed chezmoi version $current_version doesn't match the tested version $tested_version"
+	upgrade_command="{{ .chezmoi.executable }} upgrade"
+	if [ ! -w "{{ .chezmoi.executable }}" ]; then
+		upgrade_command="sudo $upgrade_command"
+	fi
+	echo " - Upgrade with: $upgrade_command"
+fi
