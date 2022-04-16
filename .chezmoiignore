@@ -50,6 +50,7 @@ irclogs/
 nobackup/
 perl5/
 repos/
+chezmoi_versions/
 {{- if ne .chezmoi.os "darwin" }}
 .gemrc
 .hammerspoon/

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 current_version="{{- .chezmoi.version.version -}}"
-tested_version="{{- include "versions/chezmoi.txt" | trim -}}"
+tested_version="{{- include "chezmoi_versions/chezmoi.txt" | trim -}}"
 if [ "$current_version" != "$tested_version" ]; then
 	echo "Currently installed chezmoi version $current_version doesn't match the tested version $tested_version"
 	if [ ! -w "{{ .chezmoi.executable }}" ]; then
