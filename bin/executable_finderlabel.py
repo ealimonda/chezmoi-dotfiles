@@ -63,6 +63,8 @@ COLORS = {'none': 0, 'gray': 2, 'green': 4, 'purple': 6,
           'blue': 8, 'yellow': 10, 'red': 12, 'orange': 14}
 NAMES  = {0: 'none', 2: 'gray', 4: 'green', 6: 'purple', 
           8: 'blue', 10 : 'yellow', 12 : 'red', 14 : 'orange' }
+SHELL_COLORS = {'none': '0', 'gray': '0;36', 'green': '0;32', 'purple': '1;35',
+                'blue': '0;34', 'yellow': '1;33', 'red': '0;31', 'orange': '0;33'}
 
 BLANK = 32*chr(0)
 
@@ -105,23 +107,30 @@ def set(filename, color): # pylint: disable=W0622
     attrs.set(_FINDER_INFO_TAG, new)
     return new
 
+def colorize(color_name):
+    if color_name in SHELL_COLORS:
+        return "\033[" + SHELL_COLORS[color_name] + "m" + color_name + "\033[0m"
+    return color_name
 
 ###############################################################################
 # If this is used as a stand-alone script:
 
 if __name__ == '__main__':
 
-    def display(pathname):
+    def display(pathname, color_output):
         ''' display filename\tcolor '''
-        print(pathname, get(pathname), sep='\t')
+        if color_output:
+            print(pathname, colorize(get(pathname)), sep='\t')
+        else:
+            print(pathname, get(pathname), sep='\t')
 
     def usage(): # pylint: disable=C0111
         print ('Usage:\n\n'
-               '{0} <filename(s)>\n\n'
+               '{0} [--color] <filename(s)>\n\n'
                'to find out what colour a file is.\n'
                'Output format is <filename><TAB><color><NEWLINE>\n\n'
                'or\n\n'
-               '{0} [color] <filename(s)>\n\n'
+               '{0} --set <color> <filename(s)>\n\n'
                'to set the color of those file(s).\n\n'
                'Possible colors are:'.format(argv[0]))
         print (*COLORS, sep=', ') # pylint: disable=W0142
@@ -131,24 +140,24 @@ if __name__ == '__main__':
 
         if len(argv) == 1: # No arguments, so display a usage message.
             usage()
+        elif len(argv) == 2 and argv[1] == "--color":
+            usage()
         elif len(argv) == 2: # One argument, so presumably a file.
-            display(argv[1])
+            display(argv[1], False)
+        elif len(argv) >= 3 and argv[1] == "--set" and argv[2] in COLORS: # --set <color> followed by at least one filename.
+            # set all preceding mentioned files to that color
+            for fn in argv[3:]:
+                set(fn, argv[2])
+                display(fn, False)
+        else:
+            start = 1
+            color_output = False
+            if argv[1] == "--color":
+                start = 2
+                color_output = True
 
-        else: # At least 2 arguments...
-
-            # If there are more args, then the last one *could* be a color,
-            # in which case, set all preceding mentioned files to that color.
-            # Otherwise, if it's a pathname, then display it and all the
-            # other paths and their colors:
-
-            if argv[1] in COLORS:
-                for fn in argv[2:]:
-                    set(fn, argv[1])
-
-                    display(fn)
-            else:
-                for f in argv[1:]:
-                    display(f)
+            for f in argv[start:]:
+                display(f, color_output)
 
     except Exception as err: # pylint: disable=W0703
         print(err, file=stderr)
