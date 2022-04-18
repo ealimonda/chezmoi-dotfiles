@@ -6,12 +6,6 @@
 #*                   Public Domain                                                                                 *
 #*******************************************************************************************************************
 
-#format = "$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
-#right_format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs"
-#format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs$line_break$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
-#format = "$status$character$sudo$username$hostname$time$directory$docker_context$env_var$shell"
-#right_format = "$cmd_duration$cmake$container$dart$golang$nodejs$perl$php$python$rust$git_branch$git_commit$git_state$git_metrics$git_status$shlvl$jobs"
-
 format = """\
 [┌─](fg:244)\
 $status\
@@ -23,7 +17,6 @@ $time\
 \
 $fill\
 \
-$c\
 $cmake\
 $container\
 $dart\
@@ -57,6 +50,7 @@ $shell\
 #$azure\
 #$battery\
 #$buf\
+#$c\
 #$conda\
 #$cobol\
 #$crystal\
@@ -130,6 +124,7 @@ disabled = true
 format = '[\[](fg:244)[$symbol([:](fg:244)$version(-$name))]($style)[\]](fg:244)'
 symbol = 'C'
 style = '149'
+disabled = true
 
 [character]
 # https://starship.rs/config/#character
