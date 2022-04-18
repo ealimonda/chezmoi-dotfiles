@@ -23,6 +23,7 @@ $time\
 \
 $fill\
 \
+$c\
 $cmake\
 $container\
 $dart\
@@ -51,7 +52,51 @@ $shell\
 # ┌ U+250C Box Drawings Light Down and Right
 # └ U+2514 Box Drawings Light Up and Right
 # ─ U+2500 Box Drawings Light Horizontal
-# unused = "$aws$azure$battery$buf$conda$cobol$crystal$deno$dotnet$elixir$elm$erlang$gcloud$haskell$helm$java$julia$kotlin$kubernetes$line_break$localip$lua$memory_usage$hg_branch$nim$nix_shell$ocaml$openstack$package$pulumi$purescript$rlang$red$ruby$scala$singularity$swift$terraform$vlang$vcsh$zig$custom"
+# unused = """\
+#$aws\
+#$azure\
+#$battery\
+#$buf\
+#$conda\
+#$cobol\
+#$crystal\
+#$deno\
+#$dotnet\
+#$elixir\
+#$elm\
+#$erlang\
+#$gcloud\
+#$haskell\
+#$helm\
+#$java\
+#$julia\
+#$kotlin\
+#$kubernetes\
+#$line_break\
+#$localip\
+#$lua\
+#$memory_usage\
+#$hg_branch\
+#$nim\
+#$nix_shell\
+#$ocaml\
+#$openstack\
+#$package\
+#$pulumi\
+#$purescript\
+#$rlang\
+#$red\
+#$ruby\
+#$scala\
+#$singularity\
+#$spack\
+#$swift\
+#$terraform\
+#$vlang\
+#$vcsh\
+#$zig\
+#$custom\
+#"""
 
 # Timeout for starship to scan files (in milliseconds).
 # scan_timeout = 30
@@ -79,6 +124,12 @@ disabled = true
 [buf]
 # https://starship.rs/config/#buf
 disabled = true
+
+[c]
+# https://starship.rs/config/#c
+format = '[\[](fg:244)[$symbol([:](fg:244)$version(-$name))]($style)[\]](fg:244)'
+symbol = 'C'
+style = '149'
 
 [character]
 # https://starship.rs/config/#character
@@ -463,6 +514,10 @@ disabled = false
 
 [singularity]
 # https://starship.rs/config/#singularity
+disabled = true
+
+[spack]
+# https://starship.rs/config/#spack
 disabled = true
 
 [status]
