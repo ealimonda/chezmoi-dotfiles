@@ -2,6 +2,7 @@ aria2
 astyle
 autoconf
 bison
+bitwise
 blink1
 brew-gem
 cabextract
@@ -12,7 +13,6 @@ cdrdao
 chezmoi
 clang-format
 cloc
-clockywock
 cmake
 cocoapods
 colordiff
@@ -25,6 +25,7 @@ ctags
 ddrescue
 dos2unix
 doxygen
+exa
 ffmpeg
 figlet
 flawfinder
@@ -42,10 +43,12 @@ go
 graphviz
 grc
 grepcidr
+grex
 hashcat
 hidapi
 highlight
 htop
+httpie
 id3v2
 imagemagick
 imagemagick@6
