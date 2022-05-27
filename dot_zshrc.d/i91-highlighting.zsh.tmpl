@@ -102,4 +102,8 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-5]='fg=blue,bold'
 # cursor-matchingbracket - the matching bracket, if cursor is on a bracket
 #ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='standout'
 
+if type fast-theme >/dev/null; then
+	fast-theme XDG:overlay
+fi
+
 # vim: ts=4 sw=4
