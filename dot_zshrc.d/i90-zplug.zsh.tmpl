@@ -14,7 +14,7 @@ fi
 if [ -n "$ZPLUG_HOME" ]; then
 	source $ZPLUG_HOME/init.zsh
 
-	zplug "zdharma-continuum/fast-syntax-highlighting"
+	zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 	if ! zplug check --verbose; then
 		echo "Some plugins are outdated or missing. Run 'zplug install' to install them"
