@@ -29,6 +29,8 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
 # suffix-alias - suffix aliases (requires zsh 5.1.1 or newer)
 #ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,underline'
+# global-alias - global aliases
+#ZSH_HIGHLIGHT_STYLES[global-alias]='fg=cyan'
 # builtin - shell builtin commands (shift, pwd, zstyle)
 #ZSH_HIGHLIGHT_STYLES[builtin]='fg=green'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,underline'
@@ -44,44 +46,87 @@ ZSH_HIGHLIGHT_STYLES[function]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'
 # hashed-command - hashed commands
 #ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green'
+# autodirectory - a directory name in command position when the AUTO_CD option is set
+#ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=green,underline'
 # path - existing filenames
 #ZSH_HIGHLIGHT_STYLES[path]='underline'
 # path_prefix - prefixes of existing filenames
 #ZSH_HIGHLIGHT_STYLES[path_prefix]='underline'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=246,underline'
+# path_pathseparator - path separators in filenames (/); if unset, path is used (default)
+#ZSH_HIGHLIGHT_STYLES[path_pathseparator]=
+# path_prefix_pathseparator - path separators in prefixes of existing filenames (/); if unset, path_prefix is used (default)
+#ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]=
 # globbing - globbing expressions (*.txt)
 #ZSH_HIGHLIGHT_STYLES[globbing]='fg=blue'
 # history-expansion - history expansion expressions (!foo and ^foo^bar)
 #ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=blue'
+# command-substitution - command substitutions ($(echo foo))
+#ZSH_HIGHLIGHT_STYLES[command-substitution]='none'
+# command-substitution-unquoted - an unquoted command substitution ($(echo foo))
+#ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]=
+# command-substitution-quoted - a quoted command substitution ("$(echo foo)")
+#ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]=
+# command-substitution-delimiter - command substitution delimiters ($( and ))
+#ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=magenta'
+# command-substitution-delimiter-unquoted - an unquoted command substitution delimiters ($( and ))
+#ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]=
+# command-substitution-delimiter-quoted - a quoted command substitution delimiters ("$( and )")
+#ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-quoted]=
+# process-substitution - process substitutions (<(echo foo))
+#ZSH_HIGHLIGHT_STYLES[process-substitution]='none'
+# process-substitution-delimiter - process substitution delimiters (<( and ))
+#ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=magenta'
+# arithmetic-expansion - arithmetic expansion $(( 42 )))
+#ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]=
 # single-hyphen-option - single hyphen options (-o)
 #ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='none'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan,bold'
 # double-hyphen-option - double hyphen options (--option)
 #ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='none'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
-# back-quoted-argument - backquoted expressions (`foo`)
+# back-quoted-argument - backtick command substitution (`foo`)
 #ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='none'
 ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=yellow,bold'
+# back-quoted-argument-unclosed - unclosed backtick command substitution (`foo)
+#ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]=
+# back-quoted-argument-delimiter - backtick command substitution delimiters (`)
+#ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=magenta'
 # single-quoted-argument - single quoted arguments ('foo')
 #ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=yellow'
+# single-quoted-argument-unclosed - unclosed single-quoted arguments ('foo)
+#ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]=
 # double-quoted-argument - double quoted arguments ("foo")
 #ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=yellow'
+# double-quoted-argument-unclosed - unclosed double-quoted arguments ("foo)
+#ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]=
 # dollar-quoted-argument - dollar quoted arguments ($'foo')
 #ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=yellow'
+# dollar-quoted-argument-unclosed - unclosed dollar-quoted arguments ($'foo)
+#ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]=
+# rc-quote - two single quotes inside single quotes when the RC_QUOTES option is set ('foo''bar')
+#ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=cyan'
 # dollar-double-quoted-argument - parameter expansion inside double quotes ($foo inside "")
 #ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=cyan'
-# back-double-quoted-argument - back double quoted arguments (\x inside "")
+# back-double-quoted-argument - backslash escape sequences inside double-quoted arguments (\" in "foo\"bar")
 #ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=cyan'
-# back-dollar-quoted-argument - back dollar quoted arguments (\x inside $'')
+# back-dollar-quoted-argument - backslash escape sequences inside dollar-quoted arguments (\x in $'\x48')
 #ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=cyan'
-# assign - parameter assignments
+# assign - parameter assignments (x=foo and x=( ))
 #ZSH_HIGHLIGHT_STYLES[assign]='none'
 ZSH_HIGHLIGHT_STYLES[assign]='fg=yellow,bold'
 # redirection - redirection operators (<, >, etc)
-#ZSH_HIGHLIGHT_STYLES[redirection]='none'
+#ZSH_HIGHLIGHT_STYLES[redirection]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta,bold'
 # comment - comments, when setopt INTERACTIVE_COMMENTS is in effect (echo # foo)
+# comment - elided parameters in command position ($x ls when $x is unset or empty)
 #ZSH_HIGHLIGHT_STYLES[comment]='fg=black,bold'
+# named-fd - named file descriptor (the fd in echo foo {fd}>&2)
+#ZSH_HIGHLIGHT_STYLES[named-fd]='none'
+# numeric-fd - numeric file descriptor (the 2 in echo foo {fd}>&2)
+#ZSH_HIGHLIGHT_STYLES[numeric-fd]='none'
+# arg0 - a command word other than one of those enumerated above (other than a command, precommand, alias, function, or shell builtin command).
+#ZSH_HIGHLIGHT_STYLES[arg0]='fg=green'
 # default - everything else
 #ZSH_HIGHLIGHT_STYLES[default]='none'
 
