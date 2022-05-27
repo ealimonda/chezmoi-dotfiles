@@ -1,0 +1,24 @@
+#*******************************************************************************************************************
+#* Config files                                                                                                    *
+#*******************************************************************************************************************
+#* File:             i90-zplug.zsh                                                                                 *
+#* Copyright:        (c) 2022 alimonda.com; Emanuele Alimonda                                                      *
+#*                   Public Domain                                                                                 *
+#*******************************************************************************************************************
+
+if [ -f /usr/local/opt/zplug/init.zsh ]; then
+	export ZPLUG_HOME=/usr/local/opt/zplug
+elif [ -f ~/.zplug/init.zsh ]; then
+	export ZPLUG_HOME=~/.zplug
+fi
+if [ -n "$ZPLUG_HOME" ]; then
+	source $ZPLUG_HOME/init.zsh
+
+	if ! zplug check --verbose; then
+		echo "Some plugins are outdated or missing. Run 'zplug install' to install them"
+	fi
+
+	zplug load
+fi
+
+# vim: ts=4 sw=4
