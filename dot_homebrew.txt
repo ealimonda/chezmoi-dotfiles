@@ -94,5 +94,5 @@ wdiff
 xdelta
 youtube-dl
 zlib
+zplug
 zsh-completions
-zsh-syntax-highlighting
