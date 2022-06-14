@@ -5,7 +5,7 @@ tested_version="{{- include "chezmoi_versions/starship.txt" | trim -}}"
 if [ "$current_version" != "$tested_version" ]; then
 	echo "Currently installed starship version $current_version doesn't match the tested version $tested_version"
 	starship_executable="$(which starship)"
-	{{ if and (eq .chezmoi.os "darwin") (lookPath "brew") -}}
+	{{ if and false and (eq .chezmoi.os "darwin") (lookPath "brew") -}}
 	upgrade_command="brew update && brew upgrade starship"
 	{{ else -}}
 	upgrade_command='curl -sS https://starship.rs/install.sh | sh'
