@@ -54,6 +54,7 @@ $shell\
 #$conda\
 #$cobol\
 #$crystal\
+#$daml\
 #$deno\
 #$dotnet\
 #$elixir\
@@ -78,8 +79,9 @@ $shell\
 #$package\
 #$pulumi\
 #$purescript\
-#$rlang\
+#$raku\
 #$red\
+#$rlang\
 #$ruby\
 #$scala\
 #$singularity\
@@ -131,8 +133,10 @@ disabled = true
 #success_symbol = "[•](bold green)"
 success_symbol = "[❯](bold green)" # U+276F Heavy Right-Pointing Angle Quotation Mark Ornament
 error_symbol = "[✗](bold red)" # U+2717 Ballot X
-#vicmd_symbol = '\[[NORM](bold yellow)\]'
-vicmd_symbol = '[❮](bold yellow)' # U+276E Heavy Left-Pointing Angle Quotation Mark Ornament
+vimcmd_symbol = '[❮](bold yellow)' # U+276E Heavy Left-Pointing Angle Quotation Mark Ornament
+vimcmd_replace_one_symbol = '[✁](bold purple)' # U+2701 Upper Blade Scissors
+vimcmd_replace_symbol = '[✂](bold purple)' # U+2702 Black Scissors
+vimcmd_visual_symbol = '[❨](bold yellow)' # U+2768 Medium Left Parenthesis Ornament
 
 [cmake]
 # https://starship.rs/config/#cmake
@@ -174,6 +178,10 @@ style = 'red dimmed'
 
 [crystal]
 # https://starship.rs/config/#crystal
+disabled = true
+
+[daml]
+# https://starship.rs/config/#daml
 disabled = true
 
 [dart]
@@ -459,12 +467,16 @@ style = 'yellow'
 symbol = 'py'
 #disabled = false
 
-[rlang]
-# https://starship.rs/config/#r
+[raku]
+# https://starship.rs/config/#raku
 disabled = true
 
 [red]
 # https://starship.rs/config/#red
+disabled = true
+
+[rlang]
+# https://starship.rs/config/#r
 disabled = true
 
 [ruby]
@@ -486,9 +498,15 @@ disabled = true
 [shell]
 # https://starship.rs/config/#shell
 format = '[$indicator]($style) '
-bash_indicator = '\$'
 #fish_indicator = 'fsh'
-zsh_indicator = '%#'
+{{ $is_root := and (not .os.windows) (eq (output "id" "-u") "0") -}}
+{{- if $is_root -}}
+bash_indicator = '#'
+zsh_indicator = '#'
+{{ else -}}
+bash_indicator = '\$'
+zsh_indicator = '%'
+{{ end -}}
 powershell_indicator = 'PS>'
 #ion_indicator = 'ion'
 #elvish_indicator = 'esh'
