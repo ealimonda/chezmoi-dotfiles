@@ -1,10 +1,8 @@
 aria2
-astyle
 autoconf
 bison
 bitwise
 blink1
-brew-gem
 cabextract
 carthage
 ccd2iso
@@ -44,7 +42,6 @@ graphviz
 grc
 grepcidr
 grex
-hashcat
 hidapi
 highlight
 htop
@@ -75,17 +72,12 @@ nmap
 nnn
 node
 nrg2iso
-nut
 p7zip
-pandoc
 perl
 rclone
 reattach-to-user-namespace
 rrdtool
-sassc
 smartmontools
-spark
-starship
 tmux
 unison
 vifm
