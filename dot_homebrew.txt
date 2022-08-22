@@ -4,7 +4,6 @@ bison
 bitwise
 blink1
 cabextract
-carthage
 ccd2iso
 ccze
 cdrdao
@@ -12,7 +11,6 @@ chezmoi
 clang-format
 cloc
 cmake
-cocoapods
 colordiff
 conan
 convmv
