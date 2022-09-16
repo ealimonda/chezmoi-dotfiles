@@ -57,6 +57,7 @@ chezmoi_versions/
 .homebrew.txt
 .mactrash
 .mvimpagerrc
+bin/__finderlabel
 bin/airport
 bin/ash.pl
 bin/brew-diff
