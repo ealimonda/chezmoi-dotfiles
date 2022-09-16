@@ -3,10 +3,6 @@ autoconf
 bison
 bitwise
 blink1
-cabextract
-ccd2iso
-ccze
-cdrdao
 chezmoi
 clang-format
 cloc
@@ -18,7 +14,6 @@ cpanminus
 cppcheck
 cronolog
 ctags
-ddrescue
 dos2unix
 doxygen
 exa
@@ -44,7 +39,6 @@ hidapi
 highlight
 htop
 httpie
-id3v2
 imagemagick
 imagemagick@6
 imagesnap
@@ -59,17 +53,12 @@ mariadb-connector-c
 mczachurski/wallpapper/wallpapper
 md5deep
 md5sha1sum
-mdf2iso
 media-info
-mkcue
-mp3splt
 mplayer
 nebula
 ninja
-nmap
 nnn
 node
-nrg2iso
 p7zip
 perl
 rclone
