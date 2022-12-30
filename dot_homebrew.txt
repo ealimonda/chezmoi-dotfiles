@@ -60,6 +60,7 @@ nnn
 node
 p7zip
 perl
+python@3.10
 rclone
 reattach-to-user-namespace
 rrdtool
