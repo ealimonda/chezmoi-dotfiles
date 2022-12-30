@@ -10,16 +10,32 @@
 #: If <list.txt> is omitted, $HOME/.homebrew.txt will be used instead.
 #:
 #: Available options:
+#: `--cask`: List casks intead of normal packages. List will be read from
+#:           $HOME/.homebrew-cask.txt by default.
 #: `-c`, `--color`: Output the diff with colors (if colordiff is installed).
 
+cask=false
 color=false
-if [ "$1" == "--color" -o "$1" == "-c" ]; then
-	color=true
+while [[ "$1" =~ ^-- ]]; do
+	case $1 in
+		--cask)
+			cask=true
+			;;
+		--color|-c)
+			color=true
+			;;
+		*)
+			echo "Unrecognized option '$1'"
+			exit 1
+			;;
+	esac
 	shift
-fi
+done
 
 if [ -n "$1" ]; then
 	list_file="$1"
+elif [ $cask = true ]; then
+	list_file="$HOME/.homebrew-cask.txt"
 else
 	list_file="$HOME/.homebrew.txt"
 fi
@@ -35,4 +51,8 @@ if [ "$color" == "true" ]; then
 		diff_cmd="colordiff -u"
 	fi
 fi
-$diff_cmd "$list_file" <(brew leaves)
+if [ $cask = true ]; then
+	$diff_cmd "$list_file" <(brew list --cask)
+else
+	$diff_cmd "$list_file" <(brew leaves)
+fi
