@@ -55,7 +55,6 @@ md5deep
 md5sha1sum
 media-info
 mplayer
-nebula
 ninja
 nnn
 node
