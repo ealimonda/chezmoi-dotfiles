@@ -70,7 +70,7 @@ vifm
 wakeonlan
 wdiff
 xdelta
-youtube-dl
+yt-dlp
 zlib
 zplug
 zsh-completions
