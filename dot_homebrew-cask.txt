@@ -3,6 +3,7 @@
 adium
 aegisub
 aria-maestosa
+audacity
 avidemux
 bricksmith
 colorpicker-skalacolor
@@ -12,9 +13,9 @@ gramps
 kdiff3
 mediainfo
 musicbrainz-picard
-mysqlworkbench
 nocturne
 openoffice
+openscad
 qlcolorcode
 qlmarkdown
 qlstephen
