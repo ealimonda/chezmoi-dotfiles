@@ -25,7 +25,6 @@ fortune
 gcc
 gcovr
 gdb
-geoip
 git-lfs
 glances
 glslang
@@ -50,11 +49,11 @@ lsusb
 lua@5.1
 mariadb
 mariadb-connector-c
-mczachurski/wallpapper/wallpapper
 md5deep
 md5sha1sum
 media-info
 mplayer
+neofetch
 ninja
 nnn
 node
@@ -65,6 +64,7 @@ rclone
 reattach-to-user-namespace
 rrdtool
 smartmontools
+snapraid
 tmux
 unison
 vifm
