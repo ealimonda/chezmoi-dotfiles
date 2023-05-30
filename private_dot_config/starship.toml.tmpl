@@ -14,6 +14,7 @@ $sudo\
 $username\
 $hostname\
 $time\
+$os\
 \
 $fill\
 \
@@ -62,7 +63,9 @@ $shell\
 #$elm\
 #$erlang\
 #$gcloud\
+#$guix_shell\
 #$haskell\
+#$haxe\
 #$helm\
 #$java\
 #$julia\
@@ -76,6 +79,7 @@ $shell\
 #$nim\
 #$nix_shell\
 #$ocaml\
+#$opa\
 #$openstack\
 #$package\
 #$pulumi\
@@ -260,6 +264,10 @@ style = 'fg:244'
 symbol = '·' # U+C2B7 Middle Dot
 #disabled = false
 
+[guix_shell]
+# https://starship.rs/config/#guix-shell
+disabled = true
+
 [gcloud]
 # https://starship.rs/config/#google-cloud-gcloud
 disabled = true
@@ -344,6 +352,10 @@ style = 'cyan'
 # https://starship.rs/config/#haskell
 disabled = true
 
+[haxe]
+# https://starship.rs/config/#haxe
+disabled = true
+
 [helm]
 # https://starship.rs/config/#helm
 disabled = true
@@ -424,9 +436,19 @@ style = 'green'
 # https://starship.rs/config/#ocaml
 disabled = true
 
+[opa]
+# https://starship.rs/config/#opa
+disabled = true
+
 [openstack]
 # https://starship.rs/config/#openstack
 disabled = true
+
+[os]
+# https://starship.rs/config/#os
+disabled = false
+format = '[\[](fg:244)[$name([:](fg:244)$version)]($style)[\]](fg:244)'
+style = 'blue'
 
 [package]
 # https://starship.rs/config/#package-manager
