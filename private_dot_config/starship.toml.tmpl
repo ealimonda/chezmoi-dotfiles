@@ -62,7 +62,10 @@ $shell\
 #$elixir\
 #$elm\
 #$erlang\
+#$fennel\
+#$fossil_branch\
 #$gcloud\
+#$gradle\
 #$guix_shell\
 #$haskell\
 #$haxe\
@@ -82,6 +85,7 @@ $shell\
 #$opa\
 #$openstack\
 #$package\
+#$pijul_channel\
 #$pulumi\
 #$purescript\
 #$raku\
@@ -256,6 +260,10 @@ disabled = true
 # https://starship.rs/config/#erlang
 disabled = true
 
+[fennel]
+# https://starship.rs/config/#fennel
+disabled = true
+
 [fill]
 # https://starship.rs/config/#fill
 style = 'fg:244'
@@ -264,8 +272,8 @@ style = 'fg:244'
 symbol = '·' # U+C2B7 Middle Dot
 #disabled = false
 
-[guix_shell]
-# https://starship.rs/config/#guix-shell
+[fossil_branch]
+# https://starship.rs/config/#fossil_branch
 disabled = true
 
 [gcloud]
@@ -347,6 +355,14 @@ format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
 symbol = 'go'
 style = 'cyan'
 #disabled = false
+
+[gradle]
+# https://starship.rs/config/#gradle
+disabled = true
+
+[guix_shell]
+# https://starship.rs/config/#guix-shell
+disabled = true
 
 [haskell]
 # https://starship.rs/config/#haskell
@@ -475,6 +491,10 @@ format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
 symbol = 'php'
 style = '147'
 #disabled = false
+
+[pijul_channel]
+# https://starship.rs/config/#pijul_channel
+disabled = true
 
 [pulumi]
 # https://starship.rs/config/#pulumi
