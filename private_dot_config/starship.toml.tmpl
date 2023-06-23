@@ -94,6 +94,7 @@ $shell\
 #$ruby\
 #$scala\
 #$singularity\
+#$solidity\
 #$spack\
 #$swift\
 #$terraform\
@@ -319,13 +320,14 @@ format = '[\(](fg:244)[$state( $progress_current/$progress_total)]($style)[\)](f
 #added_style = 'bold green'
 #deleted_style = 'bold red'
 #only_nonzero_diffs = true
+#ignore_submodules = false
 format = '( [+$added]($added_style))( [-$deleted]($deleted_style))'
 disabled = true
 
 [git_status]
 # https://starship.rs/config/#git-status
 #format = '(|[$all_status$ahead_behind]($style))\]'
-format = '($conflicted)($deleted)($renamed)($modified)($staged)($untracked)[|](fg:244)($ahead_behind)($stashed)[\]](fg:244)'
+format = '($conflicted)($deleted)($renamed)($modified)($staged)($untracked)($typechanged)[|](fg:244)($ahead_behind)($stashed)[\]](fg:244)'
 style = 'none'
 stashed = ' ⚑:$count' # U+2691 Black flag
 #ahead = '[↑${count}](yellow)'
@@ -341,6 +343,7 @@ renamed = ' [↷$count](yellow)' # U+21B7 Clockwise Top Semicircle Arrow
 modified = ' [✎$count](yellow)' # U+270E Lower Right Pencil
 staged = ' [⚭$count](blue)' # U+26AD Marriage Symbol
 untracked = ' [∴$count](cyan)' # U+2234 Therefore
+typechanged = ' [⇢$count](yellow)' # U+21E2 Rightwards Dashed Arrow
 #ignore_submodules = false
 #disabled = false
 {{- if or .os.wsl .os.windows }}
@@ -350,10 +353,11 @@ windows_starship = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/shims/starship.ex
 
 [golang]
 # https://starship.rs/config/#go
-format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)([->](fg:244)$mod_version)]($style)[\]](fg:244)'
 #version_format = 'v${raw}'
 symbol = 'go'
 style = 'cyan'
+not_capable_style = 'bold red'
 #disabled = false
 
 [gradle]
@@ -441,7 +445,7 @@ disabled = true
 
 [nodejs]
 # https://starship.rs/config/#node-js
-format = '[\[](fg:244)[$symbol([:](fg:244)$version)]($style)[\]](fg:244)'
+format = '[\[](fg:244)[$symbol([:](fg:244)$version)->[->](fg:244)$engines_version)]($style)[\]](fg:244)'
 #version_format = 'v${raw}'
 symbol = 'node'
 style = 'green'
@@ -576,6 +580,10 @@ disabled = false
 
 [singularity]
 # https://starship.rs/config/#singularity
+disabled = true
+
+[solidity]
+# https://starship.rs/config/#solidity
 disabled = true
 
 [spack]
