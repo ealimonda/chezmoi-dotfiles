@@ -48,7 +48,6 @@ function dequarantine {
 	done
 }
 
-
 #export OSXSDK="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk"
 function osxsdk {
 	echo "$(xcodebuild -version $(xcodebuild -showsdks 2>/dev/null | awk '/^$/{p=0};p; /macOS SDKs:/{p=1}' | tail -1 | cut -f3) Path 2>/dev/null)"
@@ -65,6 +64,9 @@ export HOMEBREW_NO_GITHUB_API=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 export HOMEBREW_TEMP=/usr/local/temp
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+
+alias snapraid='snapraid -c /usr/local/etc/snapraid.conf'
 {{- else if eq .chezmoi.os "linux" -}}
 # Some stuff from the Ubuntu bashrc
 if grep -q -s DISTRIB_ID=Ubuntu /etc/lsb-release; then
