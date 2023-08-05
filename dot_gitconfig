@@ -140,3 +140,5 @@
 	rebase = false
 [init]
 	defaultBranch = master
+[rebase]
+	missingCommitsCheck = error
