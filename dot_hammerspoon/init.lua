@@ -465,21 +465,14 @@ end) -- }}}
 
 -- Positions {{{3
 window_layouts = {
-    {"iTunes",       "MiniPlayer",            "iMac",           nil,        nil,       hs.geometry.rect(0, -800, 350, 850)},
-    {"iTunes",       "MiniPlayer", "Macbook Pro LCD",           nil,          hs.geometry.rect(0, 0, 310, 640),        nil},
-    {"Safari",                nil,     "DELL U2412M",      hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"Firefox",               nil,     "DELL U2412M",      hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"Nightly",               nil,     "DELL U2412M",      hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"FirefoxNightly",        nil,     "DELL U2412M",      hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"Firefox Nightly",       nil,     "DELL U2412M",      hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"Safari",                nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"Firefox",               nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"Nightly",               nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"FirefoxNightly",        nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"Firefox Nightly",       nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"Twitter",               nil,            "iMac",           nil,        nil,       hs.geometry.rect(0, -700, 400, 700)},
     {   "Mail", "All Mailboxes.*",            "iMac", hs.geometry.unitrect(0.505, 0.1, 0.495, 0.6),        nil,        nil},
     { "iTerm2",           ".*@.*",            "iMac",   hs.geometry.unitrect(0.5, 0.03, 0.5, 0.55),        nil,        nil},
+    { "Home Assistant",       nil,     "DELL U2719DC", hs.geometry.unitrect(0.895, 0, 0.105, 0.85),        nil,        nil},
 }
 
 -- Functions {{{3
