@@ -8,7 +8,7 @@ clang-format
 cloc
 cmake
 colordiff
-conan
+conan@1
 convmv
 cpanminus
 cppcheck
@@ -16,6 +16,7 @@ cronolog
 ctags
 dos2unix
 doxygen
+eslint
 exa
 ffmpeg
 figlet
@@ -56,7 +57,6 @@ mplayer
 neofetch
 ninja
 nnn
-node
 p7zip
 perl
 python@3.10
