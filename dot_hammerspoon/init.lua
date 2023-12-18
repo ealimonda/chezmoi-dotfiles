@@ -465,14 +465,14 @@ end) -- }}}
 
 -- Positions {{{3
 window_layouts = {
-    {"Safari",                nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
-    {"Firefox",               nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
+    {"Safari",                nil,     "DELL U2719DC",     hs.geometry.unitrect(0.106, 0, 0.75, 1),        nil,        nil},
+    {"Firefox",               nil,     "DELL U2719DC",     hs.geometry.unitrect(0.106, 0, 0.75, 1),        nil,        nil},
     {"Nightly",               nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"FirefoxNightly",        nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {"Firefox Nightly",       nil,     "DELL U2719DC",     hs.geometry.unitrect(0.145, 0, 0.75, 1),        nil,        nil},
     {   "Mail", "All Mailboxes.*",            "iMac", hs.geometry.unitrect(0.505, 0.1, 0.495, 0.6),        nil,        nil},
     { "iTerm2",           ".*@.*",            "iMac",   hs.geometry.unitrect(0.5, 0.03, 0.5, 0.55),        nil,        nil},
-    { "Home Assistant",       nil,     "DELL U2719DC", hs.geometry.unitrect(0.895, 0, 0.105, 0.85),        nil,        nil},
+    { "Home Assistant",       nil,     "DELL U2719DC", hs.geometry.unitrect(0.856, 0, 0.144, 1),           nil,        nil},
 }
 
 -- Functions {{{3
