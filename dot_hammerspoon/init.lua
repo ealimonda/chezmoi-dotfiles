@@ -809,6 +809,8 @@ url_dispatcher = {
         },
         -- Handle Slack-redir URLs specially so that we apply the rule on the destination URL
         decode_slack_redir_urls = false,
+        -- Delete old pending entries after a timeout (seconds), set to 0 to disable expiration
+        queue_timeout = 120,
     },
 }
 
@@ -900,7 +902,7 @@ function url_dispatcher.customHttpCallback(scheme, host, params, fullUrl)
         end
     end
     --hs.urlevent.openURLWithBundle(url, url_dispatcher.config.default_handler)
-    url_dispatcher.current_url[#url_dispatcher.current_url + 1] = url
+    url_dispatcher.current_url[#url_dispatcher.current_url + 1] = { url, os.time() }
     if not url_dispatcher.chooser:isVisible() then
         url_dispatcher.chooser:width(500 * 100 / hs.screen.mainScreen():frame().w)
         url_dispatcher.chooser:show()
@@ -917,13 +919,19 @@ function url_dispatcher:init()
             print("Browser selection aborted by the user")
             return
         end
-        if #url_dispatcher.current_url == 0 then
-            return
-        end
-        local url = url_dispatcher.current_url[1]
-        table.remove(url_dispatcher.current_url, 1)
-        if handler and handler.bundle_id then
-            hs.urlevent.openURLWithBundle(url, handler.bundle_id)
+        while #url_dispatcher.current_url > 0 do
+            local entry = url_dispatcher.current_url[1]
+            table.remove(url_dispatcher.current_url, 1)
+            local url  = entry[1]
+            local timestamp = entry[2]
+            if url_dispatcher.config.queue_timeout == 0 or timestamp >= os.time() - url_dispatcher.config.queue_timeout then
+                if handler and handler.bundle_id then
+                    hs.urlevent.openURLWithBundle(url, handler.bundle_id)
+                end
+                break
+            else
+                hs.printf("Discarding expired URL entry %s (age: %d s)", url, os.time() - timestamp)
+            end
         end
         if #url_dispatcher.current_url > 0 then
             url_dispatcher.timer = hs.timer.doAfter(0, function()
