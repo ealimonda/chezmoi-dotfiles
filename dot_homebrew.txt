@@ -16,7 +16,6 @@ ctags
 dos2unix
 doxygen
 eslint
-exa
 ffmpeg
 figlet
 flawfinder
