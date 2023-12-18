@@ -52,7 +52,6 @@ md5sha1sum
 media-info
 mplayer
 neofetch
-ninja
 nnn
 p7zip
 perl
@@ -64,6 +63,7 @@ smartmontools
 snapraid
 tmux
 unison
+vcpkg
 vifm
 wakeonlan
 wdiff
