@@ -11,6 +11,7 @@ dosbox
 gimp
 gramps
 kdiff3
+kicad
 mediainfo
 musicbrainz-picard
 nocturne
