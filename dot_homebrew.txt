@@ -23,7 +23,6 @@ flex
 fortune
 gcc
 gcovr
-gdb
 git-lfs
 glances
 glslang
