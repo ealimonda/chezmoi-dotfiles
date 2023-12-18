@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #*******************************************************************************************************************
 #* Scripts                                                                                                         *
 #*******************************************************************************************************************
@@ -29,7 +29,7 @@ else:
 for file in sys.argv[1:]:
 	sum = crc32_checksum(file)
 	if mode == "simple":
-		print "%s" %(sum)
+		print("%s" %(sum))
 	else:
 		try:
 			dest_sum = re.split('[\[\]]', file)[-2]
@@ -39,9 +39,9 @@ for file in sys.argv[1:]:
 			else:
 				c_in = c_red
 			sfile = file.split(dest_sum)
-			print "%s%s%s   %s%s%s%s%s" % (c_in, sum, c_null, sfile[0], c_in, dest_sum, c_null, sfile[1])
+			print("%s%s%s   %s%s%s%s%s" % (c_in, sum, c_null, sfile[0], c_in, dest_sum, c_null, sfile[1]))
 		except AttributeError:
-			print "%s   %s" %(sum, file)
+			print("%s   %s" %(sum, file))
 		except IndexError:
-			print "%s   %s" %(sum, file)
+			print("%s   %s" %(sum, file))
 
