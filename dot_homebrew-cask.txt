@@ -16,7 +16,6 @@ mediainfo
 musicbrainz-picard
 nocturne
 openoffice
-openscad
 qlcolorcode
 qlmarkdown
 qlstephen
