@@ -705,12 +705,14 @@ end -- }}}
 wmmode:bind({'cmd'}, "[", function()
     -- {{{
   focus_screen(hs.window.focusedWindow():screen():previous())
+    wmmode:autoexit()
 end) -- }}}
 
 -- Bring focus to next display/screen {{{3
 wmmode:bind({'cmd'}, "]", function()
     -- {{{
     focus_screen(hs.window.focusedWindow():screen():next())
+    wmmode:autoexit()
 end) -- }}}
 
 -- END DISPLAY FOCUS SWITCHING --
