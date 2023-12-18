@@ -12,7 +12,6 @@ conan@1
 convmv
 cpanminus
 cppcheck
-cronolog
 ctags
 dos2unix
 doxygen
