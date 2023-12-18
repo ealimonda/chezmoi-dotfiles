@@ -27,3 +27,4 @@ xbar
 xnviewmp
 xquartz
 zerotier-one
+zettlr
