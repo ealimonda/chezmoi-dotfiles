@@ -12,7 +12,7 @@ coconutid
 colorpicker-skalacolor
 cyberduck
 disk-inventory-x
-dosbox
+dosbox-x
 drawio
 find-any-file
 gimp
