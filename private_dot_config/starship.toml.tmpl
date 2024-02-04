@@ -559,23 +559,24 @@ disabled = true
 [shell]
 # https://starship.rs/config/#shell
 format = '[$indicator]($style) '
-#fish_indicator = 'fsh'
 {{ $is_root := and (not .os.windows) (eq (output "id" "-u") "0") -}}
 {{- if $is_root -}}
-bash_indicator = '#'
-zsh_indicator = '#'
+fish_indicator = '[\[fsh\]](fg:244) #'
+bash_indicator = '[\[bsh\]](fg:244) #'
+zsh_indicator = '[\[zsh\]](fg:244) #'
 {{ else -}}
-bash_indicator = '\$'
-zsh_indicator = '%'
+fish_indicator = '[\[fsh\]](fg:244) >'
+bash_indicator = '[\[bsh\]](fg:244) \$'
+zsh_indicator = '[\[zsh\]](fg:244) %'
 {{ end -}}
-powershell_indicator = 'PS>'
-#pwsh_indicator = 'PS>'
+powershell_indicator = '[PS](fg:244)>'
+pwsh_indicator = '[\[pwsh\]](fg:244) >'
 #ion_indicator = 'ion'
 #elvish_indicator = 'esh'
-#tcsh_indicator = 'tsh'
+tcsh_indicator = '[\[tsh\]](fg:244) %'
 #nu_indicator = 'nu'
 #xonsh_indicator = 'xsh'
-cmd_indicator = '>'
+cmd_indicator = '[CMD](fg:244)>'
 #unknown_indicator = ''
 style = 'white bold'
 disabled = false
