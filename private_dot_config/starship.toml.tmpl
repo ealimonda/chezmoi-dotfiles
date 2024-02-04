@@ -58,12 +58,14 @@ $shell\
 #$crystal\
 #$daml\
 #$deno\
+#$direnv\
 #$dotnet\
 #$elixir\
 #$elm\
 #$erlang\
 #$fennel\
 #$fossil_branch\
+#$fossil_metrics\
 #$gcloud\
 #$gradle\
 #$guix_shell\
@@ -242,6 +244,10 @@ format = '[\[](fg:244)[$symbol(:$context)]($style)[\]](fg:244)'
 # only_with_files = true
 # disabled = false
 
+[direnv]
+# https://starship.rs/config/#direnv
+disabled = true
+
 [dotnet]
 # https://starship.rs/config/#dotnet
 disabled = true
@@ -275,6 +281,10 @@ symbol = '·' # U+C2B7 Middle Dot
 
 [fossil_branch]
 # https://starship.rs/config/#fossil_branch
+disabled = true
+
+[fossil_metrics]
+# https://starship.rs/config/#fossil_metrics
 disabled = true
 
 [gcloud]
@@ -559,6 +569,7 @@ bash_indicator = '\$'
 zsh_indicator = '%'
 {{ end -}}
 powershell_indicator = 'PS>'
+#pwsh_indicator = 'PS>'
 #ion_indicator = 'ion'
 #elvish_indicator = 'esh'
 #tcsh_indicator = 'tsh'
