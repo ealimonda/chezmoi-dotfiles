@@ -86,7 +86,6 @@ bin/ed2k_hash
 bin/getTrueName
 bin/keyboard_leds
 bin/luadec51
-bin/mate
 bin/textinputsource
 {{ end -}}
 {{- if eq .chezmoi.os "windows" }}
