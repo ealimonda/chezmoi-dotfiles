@@ -56,6 +56,7 @@ chezmoi_versions/
 .gemrc
 .hammerspoon/
 .homebrew.txt
+.homebrew-cask.txt
 .mactrash
 .mvimpagerrc
 bin/__finderlabel
@@ -87,4 +88,15 @@ bin/keyboard_leds
 bin/luadec51
 bin/mate
 bin/textinputsource
+{{ end -}}
+{{- if eq .chezmoi.os "windows" }}
+.clockywock
+.zshenv
+bin/
+.tmux/
+.zshrc
+.zshrc.d/
+.tmux.conf
+.colorizerc
+.ctags
 {{ end -}}
