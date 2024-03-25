@@ -32,11 +32,11 @@
 # Any of these files may be pre-compiled with the zcompile builtin command (see zshbuiltins(1)).  If a compiled file
 # exists (named for the original file plus the .zwc extension) and it is newer than the original file, the compiled
 # file will be used instead.
+{{- if ne .unisonlocalhostname "" }}
 
-{{ if ne .unisonlocalhostname "" -}}
-UNISONLOCALHOSTNAME={{- .unisonlocalhostname -}}
+UNISONLOCALHOSTNAME={{- .unisonlocalhostname }}
 {{- end }}
+{{- if stat (joinPath .chezmoi.homeDir ".cargo") }}
 
-{{ if stat (joinPath .chezmoi.homeDir ".cargo") -}}
 . "$HOME/.cargo/env"
 {{- end }}
