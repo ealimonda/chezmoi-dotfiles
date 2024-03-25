@@ -36,7 +36,7 @@
 
 UNISONLOCALHOSTNAME={{- .unisonlocalhostname }}
 {{- end }}
-{{- if stat (joinPath .chezmoi.homeDir ".cargo") }}
+{{- if stat (joinPath .chezmoi.homeDir ".cargo/env") }}
 
 . "$HOME/.cargo/env"
 {{- end }}

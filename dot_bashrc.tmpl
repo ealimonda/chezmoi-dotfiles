@@ -42,7 +42,7 @@ if [ "${BASH_VERSION%%\.*}" -ge 4 ]; then
 		. "${BASHCOMPLOADER}"
 	fi
 fi
-{{ if stat (joinPath .chezmoi.homeDir ".cargo") -}}
+{{ if stat (joinPath .chezmoi.homeDir ".cargo/env") -}}
 . "$HOME/.cargo/env"
 {{- end }}
 
