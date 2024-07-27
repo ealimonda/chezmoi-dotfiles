@@ -34,7 +34,7 @@ syntax match animelistWDate "\(\d\|?\)\{2\}\.\(\d\|?\)\{2\}\.\(\d\|?\)\{4\}\t" n
 syntax match animelistWDate "-\t" nextgroup=animelistWRating contained
 syntax match animelistWRating "\d\+\.\d\+\s\+(\d\+)\t" nextgroup=animelistWMessage contained
 syntax match animelistWRating "N/A\s\+(\d\+)\t" nextgroup=animelistWMessage contained
-syntax match animelistWMessage "[^\t]*\t" contained
+syntax match animelistWMessage "[^\t]*" contained
 
 " Normal Entry Preamble type 1
 syntax match animelistType "^\.\t\?" nextgroup=animelistStatus2
