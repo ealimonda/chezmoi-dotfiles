@@ -42,8 +42,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
 Plug 'chrisbra/NrrwRgn' ", { 'on': ['NarrowRegion', 'NR', 'NarrowWindow', 'NW', 'NRV', 'NUD', 'NPrepare', 'NRP'] }
 Plug 'vim-scripts/Tagbar' ", { 'on': 'TagbarToggle' }
-"Plug 'jlanzarotta/bufexplorer'
-"Plug 'Rip-Rip/clang_complete'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -66,13 +64,11 @@ Plug 'tpope/vim-fugitive' ", { 'on': ['Gedit', 'Gsplit', 'Gvsplit', 'Gtabedit', 
 Plug 'tpope/vim-rhubarb' ", { 'on': 'Gbrowse' }
 Plug 'airblade/vim-gitgutter'
 Plug 'thinca/vim-localrc'
-"Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'b4winckler/vim-objc', { 'for': 'objc' }
 Plug 'tpope/vim-obsession', { 'on': 'Obsess' }
 Plug 'tpope/vim-repeat'
 Plug 'kshenoy/vim-signature'
-"Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'lumiliet/vim-twig' ", { 'for': 'twig' }
@@ -83,7 +79,6 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'embear/vim-foldsearch', { 'on': ['Fw', 'Fs', 'Fp', 'FS', 'Fl', 'Fc', 'Fi', 'Fd', 'Fe'] }
 Plug 'ealimonda/kirikiri.vim', { 'for': 'ks' }
 Plug 'Aixile/tjs.vim', { 'for': 'ks' }
-"Plug 'kergoth/vim-hilinks', { 'on': 'HiLinkTrace' }
 Plug 't9md/vim-quickhl', { 'on': ['QuickhlCwordToggle', '<Plug>(quickhl-manual-this-whole-word)', '<Plug>(quickhl-manual-reset)'] }
 Plug 'ap/vim-css-color', { 'for': 'css' }
 Plug 'cespare/vim-toml', { 'branch': 'main', 'for': 'toml' }
@@ -380,18 +375,6 @@ let g:tagbar_type_markdown = {
 " -- UNDOTREE -- [[[1
 nmap <leader>u :UndotreeToggle<CR>
 
-" -- CLANG_COMPLETE -- [[[1
-"let g:clang_auto_select = 1
-"let g:clang_snippets = 1
-"let g:clang_trailing_placeholder = 1
-"let g:clang_close_preview = 1
-"let g:clang_complete_macros = 1
-"let g:clang_use_library = 1
-"if has("mac")
-	"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-"endif
-"imap <M-Tab> <C-X><C-U>
-
 " -- SYNTASTIC -- [[[1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -567,9 +550,6 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 let g:Gitv_OpenPreviewOnLaunch = 1
 
 set lazyredraw
-
-" vim-signify [[[1
-let g:signify_vcs_list = [ 'git' ]
 
 " netrw :Explore [[[1
 noremap <leader>n :NERDTreeToggle<CR>
