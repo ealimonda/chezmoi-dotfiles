@@ -8,7 +8,7 @@ if [ "$current_version" != "$tested_version" ]; then
 	{{ if and false and (eq .chezmoi.os "darwin") (lookPath "brew") -}}
 	upgrade_command="brew update && brew upgrade starship"
 	{{ else -}}
-	upgrade_command='curl -sS https://starship.rs/install.sh | sh'
+	upgrade_command="curl -sS https://starship.rs/install.sh | sh -s -- --version v${tested_version}"
 	{{ end -}}
 	echo " - Upgrade with: $upgrade_command"
 fi
