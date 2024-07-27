@@ -49,7 +49,6 @@ md5deep
 md5sha1sum
 media-info
 mplayer
-neofetch
 nnn
 p7zip
 perl

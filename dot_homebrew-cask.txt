@@ -1,4 +1,3 @@
-0xed
 1password-cli
 adium
 aegisub
@@ -10,7 +9,6 @@ avidemux
 bricksmith
 burn
 coconutid
-colorpicker-skalacolor
 cyberduck
 disk-inventory-x
 dosbox-x
@@ -35,12 +33,10 @@ keycastr
 kicad
 launchcontrol
 libreoffice
-machacha
 macvim
 mediainfo
 mkvtoolnix
 moneydance
-mpv
 musicbrainz-picard
 namechanger
 nocturne
@@ -63,6 +59,7 @@ sequential
 simple-comic
 stats
 stellarium
+stolendata-mpv
 suspicious-package
 sweet-home3d
 swiftbar
