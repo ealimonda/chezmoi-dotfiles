@@ -68,6 +68,7 @@ $shell\
 #$fossil_metrics\
 #$gcloud\
 #$gradle\
+#$gleam\
 #$guix_shell\
 #$haskell\
 #$haxe\
@@ -81,9 +82,11 @@ $shell\
 #$lua\
 #$memory_usage\
 #$hg_branch\
+#$nats\
 #$nim\
 #$nix_shell\
 #$ocaml\
+#$odin\
 #$opa\
 #$openstack\
 #$package\
@@ -371,6 +374,10 @@ style = 'cyan'
 not_capable_style = 'bold red'
 #disabled = false
 
+[gleam]
+# https://starship.rs/config/#gleam
+disabled = true
+
 [gradle]
 # https://starship.rs/config/#gradle
 disabled = true
@@ -446,6 +453,10 @@ disabled = true
 # https://starship.rs/config/#mercurial-branch
 disabled = true
 
+[nats]
+# https://starship.rs/config/#nats
+disabled = true
+
 [nim]
 # https://starship.rs/config/#nim
 disabled = true
@@ -465,6 +476,10 @@ style = 'green'
 
 [ocaml]
 # https://starship.rs/config/#ocaml
+disabled = true
+
+[odin]
+# https://starship.rs/config/#odin
 disabled = true
 
 [opa]
