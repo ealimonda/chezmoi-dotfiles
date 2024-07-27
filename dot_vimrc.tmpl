@@ -42,10 +42,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
 Plug 'chrisbra/NrrwRgn' ", { 'on': ['NarrowRegion', 'NR', 'NarrowWindow', 'NW', 'NRV', 'NUD', 'NPrepare', 'NRP'] }
 Plug 'vim-scripts/Tagbar' ", { 'on': 'TagbarToggle' }
-{{- $enable_ycm := and (not .os.wsl) (not .os.windows) (lookPath "cmake") (or (lookPath "gcc") (lookPath "clang")) }}
-{{- if $enable_ycm }}
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-{{- end }}
 "Plug 'jlanzarotta/bufexplorer'
 "Plug 'Rip-Rip/clang_complete'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
@@ -87,7 +83,6 @@ Plug 'lumiliet/vim-twig' ", { 'for': 'twig' }
 Plug 'tpope/vim-unimpaired'
 Plug 'justinmk/vim-sneak'
 Plug 'derekwyatt/vim-fswitch', { 'for': ['c', 'cpp'] }
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'embear/vim-foldsearch', { 'on': ['Fw', 'Fs', 'Fp', 'FS', 'Fl', 'Fc', 'Fi', 'Fd', 'Fe'] }
 Plug 'ealimonda/kirikiri.vim', { 'for': 'ks' }
@@ -527,7 +522,6 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 2
 let g:airline#extensions#whitespace#trailing_format = 'trail[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'mix-ind[%s]'
 let g:airline#extensions#whitespace#mixed_indent_file_format = 'mix-ind-file[%s]'
-" let g:airline#extensions#ycm#enabled = 1 (currently using syntastic)
 let g:airline#extensions#c_like_langs = [ 'c', 'cpp', 'cuda', 'javascript', 'ld', 'php', 'c.doxygen', 'cpp.doxygen', 'ath', 'herc' ]
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':p:.'
@@ -596,27 +590,6 @@ let g:UltiSnipsJumpForwardTrigger="<None>"
 let g:UltiSnipsJumpBackwardTrigger="<None>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-{{- if $enable_ycm }}
-" YouCompleteMe [[[1
-let g:ycm_key_invoke_completion="<C-Tab>"
-let g:ycm_always_populate_location_list=1
-nnoremap <C-F5> :YcmForceCompileAndDiagnostics<CR>
-nnoremap <C-S> :YcmDiag<CR>
-map <leader>? :YcmCompleter GetDoc<CR>
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_start_csharp_server = 0
-let g:ycm_key_detailed_diagnostics = '<F5>'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" Use syntastic instead
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_register_as_syntastic_checker = 0
-" UltiSnips compatibility (through supertab)
-let g:ycm_key_list_select_completion = ['<C-N>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-P>', '<Up>']
-{{- end }}
 
 " Supertab [[[1
 " For YouCompleteMe+UltiSnips
