@@ -5,6 +5,7 @@ aegisub
 appcleaner
 aria-maestosa
 audacity
+autodesk-fusion
 avidemux
 bricksmith
 burn
