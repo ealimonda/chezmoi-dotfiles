@@ -48,7 +48,6 @@ Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'myusuf3/numbers.vim'
-Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
 Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
 Plug 'Shougo/neoyank.vim', { 'on': 'Unite' }
@@ -572,11 +571,6 @@ set lazyredraw
 " vim-signify [[[1
 let g:signify_vcs_list = [ 'git' ]
 
-" Supertab [[[1
-" For YouCompleteMe+UltiSnips
-let g:SuperTabDefaultCompletionType = '<C-N>'
-let g:SuperTabMappingForward = '<M-Tab>'
-
 " netrw :Explore [[[1
 noremap <leader>n :NERDTreeToggle<CR>
 "noremap <leader>n :Lexplore<CR>
@@ -634,8 +628,6 @@ augroup END
 " Custom mappings for the unite buffer
 "autocmd FileType unite call s:unite_settings()
 "function! s:unite_settings()
-"  " Play nice with supertab
-"  let b:SuperTabDisabled=1
 "  " Enable navigation with control-j and control-k in insert mode
 "  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
 "  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
