@@ -48,7 +48,6 @@ Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'myusuf3/numbers.vim'
-Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
 Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
@@ -572,10 +571,6 @@ set lazyredraw
 
 " vim-signify [[[1
 let g:signify_vcs_list = [ 'git' ]
-
-" scratch [[[1
-let g:scratch_persistence_file = '.scratch.vim'
-nmap <leader>s :Scratch<CR>
 
 " Supertab [[[1
 " For YouCompleteMe+UltiSnips
