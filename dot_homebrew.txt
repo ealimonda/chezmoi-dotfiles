@@ -8,7 +8,6 @@ clang-format
 cloc
 cmake
 colordiff
-conan@1
 convmv
 cpanminus
 cppcheck
