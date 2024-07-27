@@ -51,8 +51,6 @@ Plug 'myusuf3/numbers.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
 Plug 'Shougo/neoyank.vim', { 'on': 'Unite' }
 Plug 'Shougo/unite-outline', { 'on': 'Unite' }
@@ -578,18 +576,6 @@ let g:signify_vcs_list = [ 'git' ]
 " scratch [[[1
 let g:scratch_persistence_file = '.scratch.vim'
 nmap <leader>s :Scratch<CR>
-
-" UltiSnips [[[1
-" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<S-Enter>"
-let g:UltiSnipsExpandTrigger="<F4>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsExpandTrigger="<None>"
-let g:UltiSnipsJumpForwardTrigger="<None>"
-let g:UltiSnipsJumpBackwardTrigger="<None>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " Supertab [[[1
 " For YouCompleteMe+UltiSnips
