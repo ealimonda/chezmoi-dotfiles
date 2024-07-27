@@ -43,7 +43,6 @@ jq
 knock
 llvm
 lsusb
-lua@5.1
 mariadb
 mariadb-connector-c
 md5deep
