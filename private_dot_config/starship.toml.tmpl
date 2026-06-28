@@ -54,6 +54,9 @@ $shell\
 #$battery\
 #$buf\
 #$bun\
+#$claude_model\
+#$claude_context\
+#$claude_cost\
 #$conda\
 #$cobol\
 #$crystal\
@@ -82,6 +85,7 @@ $shell\
 #$line_break\
 #$localip\
 #$lua\
+#$maven\
 #$memory_usage\
 #$hg_branch\
 #$hg_state\
@@ -111,8 +115,9 @@ $shell\
 #$spack\
 #$swift\
 #$terraform\
-#$vlang\
+#$vcs\
 #$vcsh\
+#$vlang\
 #$xmake\
 #$zig\
 #$custom\
@@ -199,6 +204,18 @@ show_milliseconds = true
 
 [cobol]
 # https://starship.rs/config/#cobol-gnucobol
+disabled = true
+
+[claude_model]
+# https://starship.rs/config/#claude_model
+disabled = true
+
+[claude_context]
+# https://starship.rs/config/#claude_context
+disabled = true
+
+[claude_cost]
+# https://starship.rs/config/#claude_cost
 disabled = true
 
 [conda]
@@ -469,6 +486,10 @@ disabled = true
 # https://starship.rs/config/#lua
 disabled = true
 
+[maven]
+# https://starship.rs/config/#maven
+disabled = true
+
 [memory_usage]
 # https://starship.rs/config/#memory-usage
 disabled = true
@@ -724,12 +745,16 @@ disabled = false
 # https://starship.rs/config/#vagrant
 disabled = true
 
-[vlang]
-# https://starship.rs/config/#v
+[vcs]
+# https://starship.rs/config/#vcs
 disabled = true
 
 [vcsh]
 # https://starship.rs/config/#vcsh
+disabled = true
+
+[vlang]
+# https://starship.rs/config/#v
 disabled = true
 
 [xmake]
