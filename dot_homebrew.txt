@@ -1,6 +1,4 @@
-aria2
 autoconf
-bear
 bitwarden-cli
 bitwise
 blink1
@@ -17,9 +15,7 @@ eslint
 ffmpeg
 figlet
 gcc
-gcovr
 git-lfs
-glslang
 gnupg
 go
 graphviz
@@ -29,7 +25,6 @@ grex
 hidapi
 highlight
 htop
-httpie
 imagemagick
 iperf
 jq
@@ -44,7 +39,6 @@ media-info
 mkp224o
 mplayer
 ninja
-nnn
 p7zip
 pcre
 perl
@@ -59,7 +53,6 @@ tmux
 topiary
 tor
 unison
-vifm
 wakeonlan
 wdiff
 xdelta
