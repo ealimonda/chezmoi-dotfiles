@@ -803,9 +803,7 @@ url_dispatcher = {
             "org.mozilla.firefox",
             "com.apple.Safari",
             "com.microsoft.edgemac",
-            "org.mozilla.nightly",
             "com.vivaldi.Vivaldi",
-            "org.chromium.Chromium",
         },
         -- Handle Slack-redir URLs specially so that we apply the rule on the destination URL
         decode_slack_redir_urls = false,
