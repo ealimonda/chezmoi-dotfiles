@@ -136,7 +136,7 @@ set nocursorcolumn
 "if v:progname == "Vim"
 if has("gui_macvim")
 	" A nice font
-	set gfn=Rec\ Mono\ Emi:h11,Menlo:h11 " guifont
+	set gfn=Rec\ Mono\ Emi:h13,Menlo:h11 " guifont
 	" Integrated terminal ANSI colors
 	let g:terminal_ansi_colors = [
 		\ '#222222', '#CC000D',
@@ -150,7 +150,7 @@ if has("gui_macvim")
 		\ ]
 elseif has("gui_win32")
 	" Windows compatbility
-	set gfn=Consolas:h10:b " guifont
+	set gfn=Rec\ Mono\ Emi:h13,Consolas:h10:b " guifont
 	"set guifontwide=Yu\ Gothic:h10 "For windows to display mixed character sets
 	set encoding=utf-8
 endif
