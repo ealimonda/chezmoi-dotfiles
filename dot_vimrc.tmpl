@@ -45,10 +45,6 @@ Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(i
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'myusuf3/numbers.vim'
 Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
-Plug 'Shougo/neoyank.vim', { 'on': 'Unite' }
-Plug 'Shougo/unite-outline', { 'on': 'Unite' }
-Plug 'Shougo/unite.vim', { 'on': 'Unite' }
-Plug 'Shougo/vimproc.vim', { 'on': 'Unite', 'do': 'make' }
 Plug 'tpope/vim-afterimage'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -521,36 +517,6 @@ let g:sneak#prompt = 'Sneak> '
 let g:sneak#textobject_z = 1
 nmap s <Plug>(SneakStreak)
 nmap S <Plug>(SneakStreakBackward)
-
-" Unite [[[1
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-let g:unite_enable_auto_select = 0
-nnoremap <Leader>t :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=files   -start-insert file_rec/async:!<CR>
-nnoremap <Leader>f :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=files   -start-insert file<CR>
-"nnoremap <Leader>r :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=mru     -start-insert file_mru<CR>
-nnoremap <Leader>o :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=outline -start-insert outline<CR>
-nnoremap <Leader>y :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=yank    history/yank<CR>
-nnoremap <Leader>b :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=buffer  buffer<CR>
-nnoremap <Leader>g :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=grep    grep/git:.<CR>
-nnoremap <Leader>/ :<C-u>Unite -prompt-focus -direction=botright -split -no-hide-icon -buffer-name=grep    grep:.<CR>
-
-augroup unite_plug_load
-	" Q: I want to match candidates by filename.
-	autocmd! User unite.vim call unite#custom#source(
-		\ 'buffer,file_rec/async,file_rec', 'matchers',
-		\ ['converter_tail', 'matcher_default'])
-	autocmd! User unite.vim call unite#custom#source(
-		\ 'file_rec/async,file_rec', 'converters',
-		\ ['converter_file_directory'])
-augroup END
-
-" Custom mappings for the unite buffer
-"autocmd FileType unite call s:unite_settings()
-"function! s:unite_settings()
-"  " Enable navigation with control-j and control-k in insert mode
-"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-"endfunction
 
 " Debug [[[1
 "nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
