@@ -53,7 +53,6 @@ Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', '<Plug>(EasyAlign)'] }
 Plug 'tpope/vim-eunuch', { 'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod', 'Mkdir', 'Find', 'Locate', 'Wall', 'SudoWrite', 'SudoEdit'] }
 Plug 'kopischke/vim-fetch'
 Plug 'tpope/vim-fugitive' ", { 'on': ['Gedit', 'Gsplit', 'Gvsplit', 'Gtabedit', 'Gdiff', 'Gstatus', 'Gblame', 'Gmove', 'Gremove', 'Ggrep', 'Glog', 'Gread', 'Gbrowse', 'Git'] }
-Plug 'airblade/vim-gitgutter'
 Plug 'thinca/vim-localrc'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'b4winckler/vim-objc', { 'for': 'objc' }
@@ -139,12 +138,6 @@ set tabpagemax=50
 " Show cursor line/column
 set cursorline
 set nocursorcolumn
-
-" Used i.e. by gitgutter
-set updatetime=1000
-highlight GitGutterAdd    guifg=#009900 guibg=#000000 ctermfg=2 ctermbg=0
-highlight GitGutterChange guifg=#bbbb00 guibg=#000000 ctermfg=3 ctermbg=0
-highlight GitGutterDelete guifg=#ff2222 guibg=#000000 ctermfg=1 ctermbg=0
 
 " Various Mac-only settings [[[1
 " (note: some of them would work on other platforms too)
