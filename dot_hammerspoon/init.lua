@@ -638,36 +638,6 @@ wmmode:bind({}, 'tab', function()
     wmmode:autoexit()
 end) -- }}}
 
--- Tabbing {{{2
-
--- Settings {{{3
-hs.window.switcher.ui.textColor             = {1, 1, 1}
-hs.window.switcher.ui.fontName              = 'HelveticaNeue-Light'
-hs.window.switcher.ui.textSize              = 16
-hs.window.switcher.ui.highlightColor        = {0.8, 0.5, 0, 0.8}
-hs.window.switcher.ui.backgroundColor       = {0.3, 0.3, 0.3, 0.7}
-hs.window.switcher.ui.onlyActiveApplication = true
-hs.window.switcher.ui.showTitles            = false
-hs.window.switcher.ui.titleBackgroundColor  = {0, 0, 0, 0.8}
-hs.window.switcher.ui.showThumbnails        = true
-hs.window.switcher.ui.thumbnailSize         = 128
-hs.window.switcher.ui.showSelectedThumbnail = true
-hs.window.switcher.ui.selectedThumbnailSize = 384
-hs.window.switcher.ui.showSelectedTitle     = true
-windowswitcher = hs.window.switcher.new()
-
--- Ctrl-(Shift)-Tab {{{3
-wmmode:bind({'ctrl'}, 'tab', function()
-    -- {{{
-    -- TODO: This probably requires an event tap in order to be able to leave wmmode when releasing ctrl
-    windowswitcher:next()
-end) -- }}}
-wmmode:bind({'ctrl', 'shift'}, 'tab', function()
-    -- {{{
-    -- TODO: This probably requires an event tap in order to be able to leave wmmode when releasing ctrl
-    windowswitcher:previous()
-end) -- }}}
-
 -- Select display {{{2
 
 -- From http://bezhermoso.github.io/2016/01/20/making-perfect-ramen-lua-os-x-automation-with-hammerspoon/
