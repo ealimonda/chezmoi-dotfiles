@@ -1,4 +1,3 @@
-autoconf
 bitwarden-cli
 bitwise
 blink1
@@ -10,7 +9,6 @@ colordiff
 convmv
 cpanminus
 dos2unix
-doxygen
 eslint
 ffmpeg
 figlet
@@ -23,14 +21,13 @@ grc
 grepcidr
 grex
 hidapi
-highlight
 htop
 imagemagick
 iperf
 jq
 knock
-llvm
 lsusb
+lua
 mariadb
 mariadb-connector-c
 md5deep
@@ -40,7 +37,6 @@ mkp224o
 mplayer
 ninja
 p7zip
-pcre
 perl
 python@3.12
 python@3.13
@@ -57,6 +53,5 @@ wakeonlan
 wdiff
 xdelta
 yt-dlp
-zlib
 zplug
 zsh-completions
