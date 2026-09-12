@@ -41,7 +41,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
 Plug 'chrisbra/NrrwRgn' ", { 'on': ['NarrowRegion', 'NR', 'NarrowWindow', 'NW', 'NRV', 'NUD', 'NPrepare', 'NRP'] }
-Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'myusuf3/numbers.vim'
@@ -525,11 +524,6 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 "	map <D-{> <Plug>AirlineSelectPrevTab
 "	map <D-}> <Plug>AirlineSelectNextTab
 "endif
-
-" Gitv [[[1
-let g:Gitv_OpenPreviewOnLaunch = 1
-
-set lazyredraw
 
 " netrw :Explore [[[1
 noremap <leader>n :NERDTreeToggle<CR>
