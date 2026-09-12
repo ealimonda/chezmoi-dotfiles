@@ -41,7 +41,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
 Plug 'chrisbra/NrrwRgn' ", { 'on': ['NarrowRegion', 'NR', 'NarrowWindow', 'NW', 'NRV', 'NUD', 'NPrepare', 'NRP'] }
-Plug 'vim-scripts/Tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -352,25 +351,6 @@ endfunction
 autocmd FileType cpp nnoremap <leader>m :call ExpandCMacro()<CR>
 autocmd FileType c nnoremap <leader>m :call ExpandCMacro()<CR>
 
-" -- TAGBAR -- [[[1
-" map C-L to toggle the tagbar list
-nmap <leader>l :TagbarToggle<CR>
-"let g:tagbar_type_css = {
-"\ 'ctagstype' : 'Css',
-"	\ 'kinds' : [
-"		\ 'c:classes',
-"		\ 's:selectors',
-"		\ 'i:identities'
-"	\ ]
-"\ }
-let g:tagbar_type_markdown = {
-	\ 'ctagstype' : 'markdown',
-	\ 'kinds' : [
-		\ 'h:Heading_L1',
-		\ 'i:Heading_L2',
-		\ 'k:Heading_L3'
-	\ ]
-\ }
 
 " -- UNDOTREE -- [[[1
 nmap <leader>u :UndotreeToggle<CR>
