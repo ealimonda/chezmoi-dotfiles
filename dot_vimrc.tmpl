@@ -44,7 +44,6 @@ Plug 'chrisbra/NrrwRgn' ", { 'on': ['NarrowRegion', 'NR', 'NarrowWindow', 'NW', 
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)', '<Plug>(incsearch-stay)'] }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'myusuf3/numbers.vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
 Plug 'Shougo/neoyank.vim', { 'on': 'Unite' }
 Plug 'Shougo/unite-outline', { 'on': 'Unite' }
@@ -353,40 +352,6 @@ autocmd FileType c nnoremap <leader>m :call ExpandCMacro()<CR>
 
 " -- UNDOTREE -- [[[1
 nmap <leader>u :UndotreeToggle<CR>
-
-" -- SYNTASTIC -- [[[1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_c_config_file = '.clang_complete'
-let g:syntastic_c_compiler = 'clang'
-let g:syntastic_c_check_header = 1
-let g:syntastic_c_auto_refresh_includes = 1
-let g:syntastic_c_no_include_search = 1
-let g:syntastic_cpp_config_file = '.clang_complete'
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_c_no_include_search = 1
-let g:syntastic_java_javac_config_file_enabled = 1
-let g:syntastic_perl_checkers = ['perl', 'perlcritic']
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_go_checkers = ['go']
-let g:syntastic_html_tidy_ignore_errors = [
-	\"trimming empty <i>",
-	\"trimming empty <span>",
-	\"<iframe> proprietary attribute \"allowfullscreen\"",
-	\"<textarea> proprietary attribute \"placeholder\"",
-\]
-
-if exists('g:syntastic_extra_filetypes')
-	call add(g:syntastic_extra_filetypes, 'herc')
-	call add(g:syntastic_extra_filetypes, 'ath')
-else
-	let g:syntastic_extra_filetypes = ['herc', 'ath']
-endif
 
 " hex2dec/dec2hex [[[1
 command! -nargs=? -range Dec2hex call s:Dec2hex(<line1>, <line2>, '<args>')
